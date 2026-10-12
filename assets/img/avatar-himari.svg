@@ -1,29 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <title>MomoTalk 头像：明星日鞠（白色长发与花饰）</title>
+  <title>头像：明星日鞠（白色长直发·花饰·紫眼微笑）</title>
+  <defs>
+    <radialGradient id="hiBg" cx="50%" cy="34%" r="80%">
+      <stop offset="0%" stop-color="#fbf9ff"/>
+      <stop offset="55%" stop-color="#e6dcf7"/>
+      <stop offset="100%" stop-color="#c3b3e8"/>
+    </radialGradient>
+    <linearGradient id="hiHair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dfe4f2"/>
+    </linearGradient>
+    <linearGradient id="hiEye" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c4aaf2"/>
+      <stop offset="100%" stop-color="#8a5fd8"/>
+    </linearGradient>
+  </defs>
   <g stroke-linejoin="round" stroke-linecap="round">
-    <circle cx="48" cy="48" r="46" fill="#e6dcf7"/>
-    <path d="M 48,28 C 74,28 80,54 78,80 L 72,90 L 24,90 L 18,80 C 16,54 22,28 48,28 Z"
-          fill="#ffffff" stroke="#10203e" stroke-width="2.5"/>
-    <circle cx="48" cy="58" r="20" fill="#eef5ff" stroke="#10203e" stroke-width="2.5"/>
-    <path d="M 28,50 Q 32,34 48,33 Q 64,34 68,50 L 64,60 L 56,50 L 48,60 L 40,50 L 32,60 Z"
-          fill="#ffffff" stroke="#10203e" stroke-width="2"/>
-    <g fill="#ffffff" stroke="#10203e" stroke-width="1.5">
-      <circle cx="70" cy="39" r="3.5"/>
-      <circle cx="75.3" cy="43.4" r="3.5"/>
-      <circle cx="73.7" cy="50" r="3.5"/>
-      <circle cx="66.3" cy="50" r="3.5"/>
-      <circle cx="64.7" cy="43.4" r="3.5"/>
+    <!-- 浅紫圆底 -->
+    <circle cx="48" cy="48" r="46" fill="url(#hiBg)"/>
+    <circle cx="48" cy="48" r="42.5" fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".65"/>
+    <!-- 白色长直发（后层，发缕+高光） -->
+    <path d="M 48,25 C 73,25 80,52 78,82 L 72,92 L 24,92 L 18,82 C 16,52 23,25 48,25 Z"
+          fill="url(#hiHair)" stroke="#10203e" stroke-width="2.5"/>
+    <path d="M 30,38 Q 23,62 26,88" fill="none" stroke="#b9c2dc" stroke-width="2" opacity=".7"/>
+    <path d="M 66,38 Q 73,62 70,88" fill="none" stroke="#b9c2dc" stroke-width="2" opacity=".7"/>
+    <path d="M 40,32 Q 35,58 37,88" fill="none" stroke="#ffffff" stroke-width="2.4" opacity=".9"/>
+    <path d="M 57,32 Q 62,58 60,88" fill="none" stroke="#ffffff" stroke-width="2" opacity=".7"/>
+    <!-- 头与脸 -->
+    <circle cx="48" cy="52.5" r="23.5" fill="url(#hiHair)" stroke="#10203e" stroke-width="2.5"/>
+    <circle cx="48" cy="55.5" r="19" fill="#fff1e6" stroke="#10203e" stroke-width="2.2"/>
+    <!-- 公主切刘海 -->
+    <path d="M 29.5,49 Q 29,35.5 48,34 Q 67,35.5 66.5,49 L 62,45.5 L 57.5,50.5 L 52,45.5 L 48,50.5 L 44,45.5 L 38.5,50.5 L 34,45.5 Z"
+          fill="url(#hiHair)" stroke="#10203e" stroke-width="2"/>
+    <path d="M 36,41 Q 42,35.5 51,36.5" fill="none" stroke="#ffffff" stroke-width="2.6" opacity=".95"/>
+    <path d="M 55,38.5 Q 59,40.5 61.5,44.5" fill="none" stroke="#ffffff" stroke-width="1.6" opacity=".8"/>
+    <!-- 公主切侧发（过肩） -->
+    <path d="M 29.5,47 Q 24,64 26,80 L 32,79 Q 29.5,64 32,50 Z" fill="url(#hiHair)" stroke="#10203e" stroke-width="1.8"/>
+    <path d="M 66.5,47 Q 72,64 70,80 L 64,79 Q 66.5,64 64,50 Z" fill="url(#hiHair)" stroke="#10203e" stroke-width="1.8"/>
+    <!-- 白色花饰（头侧） -->
+    <g stroke="#10203e" stroke-width="1.4">
+      <circle cx="71" cy="33" r="4" fill="#ffffff"/>
+      <circle cx="76.3" cy="37.4" r="4" fill="#ffffff"/>
+      <circle cx="74.7" cy="44" r="4" fill="#ffffff"/>
+      <circle cx="67.3" cy="44" r="4" fill="#ffffff"/>
+      <circle cx="65.7" cy="37.4" r="4" fill="#ffffff"/>
     </g>
-    <circle cx="70" cy="45" r="2.5" fill="#ffd94a" stroke="#10203e" stroke-width="1.5"/>
-    <g>
-      <ellipse cx="41" cy="63" rx="3.2" ry="4.2" fill="#9a7ae0" stroke="#10203e" stroke-width="1.5"/>
-      <ellipse cx="55" cy="63" rx="3.2" ry="4.2" fill="#9a7ae0" stroke="#10203e" stroke-width="1.5"/>
-      <circle cx="40" cy="61.5" r="1" fill="#ffffff"/>
-      <circle cx="54" cy="61.5" r="1" fill="#ffffff"/>
-    </g>
-    <path d="M 44,71 Q 48,75 52,71" fill="none" stroke="#10203e" stroke-width="2"/>
-    <ellipse cx="36" cy="68" rx="3" ry="2" fill="#ff9fb2"/>
-    <ellipse cx="60" cy="68" rx="3" ry="2" fill="#ff9fb2"/>
+    <circle cx="71" cy="39.4" r="2.6" fill="#ffd94a" stroke="#10203e" stroke-width="1.4"/>
+    <circle cx="71" cy="39.4" r=".9" fill="#ffc93c"/>
+    <!-- 眉眼（紫眼微笑） -->
+    <path d="M 36.6,55.8 Q 40,54.2 43.2,55.8" fill="none" stroke="#10203e" stroke-width="1.6"/>
+    <path d="M 52.8,55.8 Q 56,54.2 59.4,55.8" fill="none" stroke="#10203e" stroke-width="1.6"/>
+    <ellipse cx="40.5" cy="62" rx="3.3" ry="4.4" fill="url(#hiEye)" stroke="#10203e" stroke-width="1.5"/>
+    <ellipse cx="55.5" cy="62" rx="3.3" ry="4.4" fill="url(#hiEye)" stroke="#10203e" stroke-width="1.5"/>
+    <circle cx="39.3" cy="60.5" r="1.15" fill="#ffffff"/>
+    <circle cx="41.7" cy="63.4" r=".6" fill="#ffffff" opacity=".85"/>
+    <circle cx="54.3" cy="60.5" r="1.15" fill="#ffffff"/>
+    <circle cx="56.7" cy="63.4" r=".6" fill="#ffffff" opacity=".85"/>
+    <!-- 微笑 + 腮红 -->
+    <path d="M 44.8,70.2 Q 48,72.6 51.2,70.2" fill="none" stroke="#10203e" stroke-width="2"/>
+    <path d="M 47.6,66.8 L 48.3,67.5" fill="none" stroke="#10203e" stroke-width="1.3" opacity=".7"/>
+    <ellipse cx="34.8" cy="66.8" rx="2.8" ry="1.8" fill="#ff9fb2" opacity=".5"/>
+    <ellipse cx="61.2" cy="66.8" rx="2.8" ry="1.8" fill="#ff9fb2" opacity=".5"/>
+    <!-- 高领白衣领 -->
+    <path d="M 31,78 Q 48,71 65,78 L 68,96 L 28,96 Z" fill="#ffffff" stroke="#10203e" stroke-width="2"/>
+    <path d="M 39,74.5 Q 48,80 57,74.5 L 57,79 Q 48,84.5 39,79 Z" fill="#ffffff" stroke="#10203e" stroke-width="1.8"/>
+    <path d="M 41.5,77.5 Q 48,82 54.5,77.5" fill="none" stroke="#c9d4ea" stroke-width="1.6"/>
   </g>
 </svg>

@@ -335,7 +335,7 @@
 .hero-figure {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 580px;
   height: auto;
   animation: ba-float 6s var(--ease-soft) infinite;
   filter: drop-shadow(0 26px 42px rgba(2, 8, 20, .55));

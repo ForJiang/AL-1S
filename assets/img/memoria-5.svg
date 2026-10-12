@@ -1,37 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
-  <title>记忆局限卡面五：弹仓</title>
+  <title>记忆局限五：梦想的含义（弹丸排列·心形光束·黄粉暖调）</title>
+  <defs>
+    <linearGradient id="m5Bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff6da"/>
+      <stop offset="50%" stop-color="#ffe4ec"/>
+      <stop offset="100%" stop-color="#ffbccb"/>
+    </linearGradient>
+    <radialGradient id="m5Glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd94a" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#ffd94a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="m5Heart" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffc2cf"/>
+      <stop offset="100%" stop-color="#ff7d9e"/>
+    </linearGradient>
+    <linearGradient id="m5Bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1428"/>
+      <stop offset="100%" stop-color="#10203e"/>
+    </linearGradient>
+  </defs>
   <g stroke-linejoin="round" stroke-linecap="round">
-    <rect width="300" height="420" fill="#e4f2ff"/>
-    <polygon points="238,140 206,216.2 94,216.2 62,140 94,63.8 206,63.8"
-             fill="#ffffff" stroke="#10203e" stroke-width="3.5"/>
-    <g>
-      <rect x="76" y="96" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="76" y="96" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="116" y="96" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="116" y="96" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="156" y="96" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="156" y="96" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="76" y="132" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="76" y="132" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="116" y="132" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="116" y="132" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="156" y="132" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="156" y="132" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="76" y="168" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="76" y="168" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="116" y="168" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="116" y="168" width="11" height="16" rx="4" fill="#ffd94a"/>
-      <rect x="156" y="168" width="54" height="16" rx="8" fill="#10203e"/>
-      <rect x="156" y="168" width="11" height="16" rx="4" fill="#ffd94a"/>
+    <!-- 黄粉暖调天幕 -->
+    <rect width="300" height="420" fill="url(#m5Bg)"/>
+    <circle cx="150" cy="104" r="104" fill="url(#m5Glow)"/>
+    <!-- 心形光束 -->
+    <g fill="#ffd94a" opacity=".34">
+      <polygon points="150,64 106,12 130,18"/>
+      <polygon points="150,64 150,6 166,16"/>
+      <polygon points="150,64 194,12 170,18"/>
+      <polygon points="128,74 84,44 104,56"/>
+      <polygon points="172,74 216,44 196,56"/>
     </g>
-    <rect y="280" width="300" height="140" fill="#10203e"/>
-    <rect y="280" width="300" height="5" fill="#ffd94a"/>
-    <polygon points="26,340 36,345 36,355 26,360 16,355 16,345" fill="#183054" stroke="#4aa8f0" stroke-width="2"/>
-    <g stroke="#22406e" stroke-width="3">
-      <line x1="48" y1="340" x2="250" y2="340"/>
-      <line x1="48" y1="356" x2="200" y2="356"/>
+    <!-- 主心形 -->
+    <path d="M 150,142 C 118,120 102,106 102,89 C 102,75 113,67 124,67 C 134,67 143,73 150,84 C 157,73 166,67 176,67 C 187,67 198,75 198,89 C 198,106 182,120 150,142 Z"
+          fill="url(#m5Heart)" stroke="#10203e" stroke-width="3"/>
+    <ellipse cx="131" cy="83" rx="9" ry="5.5" fill="#ffffff" opacity=".65" transform="rotate(-24 131 83)"/>
+    <path d="M 118,96 Q 128,88 138,92" fill="none" stroke="#ffffff" stroke-width="2.4" opacity=".5"/>
+    <circle cx="150" cy="103" r="5" fill="#ffd94a" stroke="#10203e" stroke-width="1.6"/>
+    <!-- 漂浮小爱心 -->
+    <g fill="#ff9fb2" stroke="#10203e" stroke-width="1.6">
+      <path d="M 60,62 C 54,56 50,53 50,48.5 C 50,44.5 53,42 56,42 C 58.2,42 60,43.5 61.5,46 C 63,43.5 64.8,42 67,42 C 70,42 73,44.5 73,48.5 C 73,53 69,56 63,62 Z" transform="scale(1)"/>
+      <path d="M 246,74 C 240,68 236,65 236,60.5 C 236,56.5 239,54 242,54 C 244.2,54 246,55.5 247.5,58 C 249,55.5 250.8,54 253,54 C 256,54 259,56.5 259,60.5 C 259,65 255,68 249,74 Z"/>
+      <path d="M 36,132 C 32,127.5 29.5,125.5 29.5,122.2 C 29.5,119.2 31.7,117.4 34,117.4 C 35.6,117.4 37,118.5 38.2,120.5 C 39.4,118.5 40.8,117.4 42.4,117.4 C 44.7,117.4 46.9,119.2 46.9,122.2 C 46.9,125.5 44.4,127.5 40.4,132 Z"/>
+      <path d="M 268,140 C 264,135.5 261.5,133.5 261.5,130.2 C 261.5,127.2 263.7,125.4 266,125.4 C 267.6,125.4 269,126.5 270.2,128.5 C 271.4,126.5 272.8,125.4 274.4,125.4 C 276.7,125.4 278.9,127.2 278.9,130.2 C 278.9,133.5 276.4,135.5 272.4,140 Z"/>
     </g>
+    <!-- 弹丸排列面板 -->
+    <rect x="52" y="158" width="196" height="96" rx="14" fill="#ffffff" fill-opacity=".88" stroke="#10203e" stroke-width="3"/>
+    <rect x="58" y="164" width="184" height="26" rx="10" fill="#ffd94a" opacity=".28"/>
+    <g stroke="#10203e" stroke-width="2">
+      <g fill="#10203e">
+        <rect x="64" y="172" width="48" height="16" rx="8"/>
+        <rect x="126" y="172" width="48" height="16" rx="8"/>
+        <rect x="188" y="172" width="48" height="16" rx="8"/>
+        <rect x="64" y="200" width="48" height="16" rx="8"/>
+        <rect x="126" y="200" width="48" height="16" rx="8"/>
+        <rect x="188" y="200" width="48" height="16" rx="8"/>
+        <rect x="64" y="228" width="48" height="16" rx="8"/>
+        <rect x="126" y="228" width="48" height="16" rx="8"/>
+        <rect x="188" y="228" width="48" height="16" rx="8"/>
+      </g>
+      <g fill="#ffd94a">
+        <rect x="66" y="174" width="14" height="12" rx="6"/>
+        <rect x="128" y="174" width="14" height="12" rx="6"/>
+        <rect x="190" y="174" width="14" height="12" rx="6"/>
+        <rect x="66" y="202" width="14" height="12" rx="6"/>
+        <rect x="128" y="202" width="14" height="12" rx="6"/>
+        <rect x="190" y="202" width="14" height="12" rx="6"/>
+        <rect x="66" y="230" width="14" height="12" rx="6"/>
+        <rect x="128" y="230" width="14" height="12" rx="6"/>
+        <rect x="190" y="230" width="14" height="12" rx="6"/>
+      </g>
+    </g>
+    <!-- 星尘 -->
+    <g fill="#ffd94a" stroke="#10203e" stroke-width="1.2">
+      <path d="M 40,36 L 42.4,43 L 49.8,45.4 L 42.4,47.8 L 40,55 L 37.6,47.8 L 30.2,45.4 L 37.6,43 Z"/>
+      <path d="M 258,42 L 260,48.4 L 266.4,50.4 L 260,52.4 L 258,59 L 256,52.4 L 249.6,50.4 L 256,48.4 Z"/>
+      <path d="M 276,116 L 277.6,121.2 L 282.8,122.8 L 277.6,124.4 L 276,129.6 L 274.4,124.4 L 269.2,122.8 L 274.4,121.2 Z"/>
+      <path d="M 22,100 L 23.6,105.2 L 28.8,106.8 L 23.6,108.4 L 22,113.6 L 20.4,108.4 L 15.2,106.8 L 20.4,105.2 Z"/>
+    </g>
+    <!-- 深蓝信息条 -->
+    <rect y="260" width="300" height="160" fill="url(#m5Bar)"/>
+    <rect y="260" width="300" height="3" fill="#ffd94a"/>
+    <rect y="263" width="300" height="26" fill="#ffffff" opacity=".05"/>
+    <polygon points="26,288 36,293.5 36,302.5 26,308 16,302.5 16,293.5" fill="none" stroke="#4aa8f0" stroke-width="2"/>
+    <circle cx="26" cy="298" r="3" fill="#ffd94a"/>
+    <g fill="#ffd94a" opacity=".9">
+      <path d="M 246,292 L 247.4,296.6 L 252,298 L 247.4,299.4 L 246,304 L 244.6,299.4 L 240,298 L 244.6,296.6 Z"/>
+      <path d="M 262,296 L 263,299.6 L 266.6,301 L 263,302.4 L 262,306 L 261,302.4 L 257.4,301 L 261,299.6 Z"/>
+      <path d="M 276,290 L 277.6,295.2 L 282.8,296.8 L 277.6,298.4 L 276,303.6 L 274.4,298.4 L 269.2,296.8 L 274.4,295.2 Z"/>
+    </g>
+    <line x1="16" y1="322" x2="284" y2="322" stroke="#22406e" stroke-width="2"/>
+    <!-- 卡框 -->
     <rect x="1" y="1" width="298" height="418" fill="none" stroke="#10203e" stroke-width="2"/>
   </g>
 </svg>
