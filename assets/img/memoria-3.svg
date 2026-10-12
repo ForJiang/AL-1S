@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <title>记忆局限卡面三：雨水</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect width="300" height="420" fill="#c8e8ff"/>
+    <g stroke="#4aa8f0" stroke-width="4">
+      <line x1="60" y1="40" x2="40" y2="90"/>
+      <line x1="110" y1="20" x2="90" y2="70"/>
+      <line x1="170" y1="50" x2="150" y2="100"/>
+      <line x1="225" y1="25" x2="205" y2="75"/>
+      <line x1="255" y1="70" x2="235" y2="120"/>
+      <line x1="80" y1="130" x2="60" y2="180"/>
+      <line x1="150" y1="150" x2="130" y2="200"/>
+      <line x1="215" y1="160" x2="195" y2="210"/>
+    </g>
+    <path d="M 100,55 C 116,98 124,114 124,128 A 24,24 0 1 1 76,128 C 76,114 84,98 100,55 Z"
+          fill="#4aa8f0" stroke="#10203e" stroke-width="3.5"/>
+    <path d="M 215,150 C 224,174 228,182 228,189 A 13,13 0 1 1 202,189 C 202,182 206,174 215,150 Z"
+          fill="#ffffff" stroke="#10203e" stroke-width="2.5"/>
+    <g fill="none" stroke="#ffffff" stroke-width="4">
+      <path d="M 110,240 Q 150,258 190,240"/>
+      <path d="M 125,222 Q 150,236 175,222"/>
+    </g>
+    <rect y="280" width="300" height="140" fill="#10203e"/>
+    <rect y="280" width="300" height="5" fill="#ffd94a"/>
+    <polygon points="26,340 36,345 36,355 26,360 16,355 16,345" fill="#183054" stroke="#4aa8f0" stroke-width="2"/>
+    <g stroke="#22406e" stroke-width="3">
+      <line x1="48" y1="340" x2="250" y2="340"/>
+      <line x1="48" y1="356" x2="200" y2="356"/>
+    </g>
+    <rect x="1" y="1" width="298" height="418" fill="none" stroke="#10203e" stroke-width="2"/>
+  </g>
+</svg>

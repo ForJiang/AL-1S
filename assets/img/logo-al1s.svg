@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
+  <title>AL-1S 站标：六边形外框与机械光环</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <polygon points="198,96 177,163.55 63,163.55 42,96 63,28.45 177,28.45"
+             fill="#e4f2ff" stroke="#10203e" stroke-width="6"/>
+    <polygon points="186,96 168,153.16 72,153.16 54,96 72,38.84 168,38.84"
+             fill="none" stroke="#9ad8ff" stroke-width="2"/>
+    <g>
+      <circle cx="120" cy="88" r="34" fill="none" stroke="#ffd94a" stroke-width="7"/>
+      <circle cx="120" cy="88" r="25" fill="#ffffff"/>
+      <polygon points="108,58 132,58 137,44 103,44" fill="#ffd94a" stroke="#10203e" stroke-width="2"/>
+      <polygon points="108,118 132,118 137,132 103,132" fill="#ffd94a" stroke="#10203e" stroke-width="2"/>
+      <polygon points="90,76 90,100 76,105 76,71" fill="#ffd94a" stroke="#10203e" stroke-width="2"/>
+      <polygon points="150,76 150,100 164,105 164,71" fill="#ffd94a" stroke="#10203e" stroke-width="2"/>
+      <polygon points="120,74 132.12,81 132.12,95 120,102 107.88,95 107.88,81"
+               fill="#c8e8ff" stroke="#10203e" stroke-width="3"/>
+      <circle cx="120" cy="88" r="3.5" fill="#10203e"/>
+    </g>
+    <g fill="none" stroke="#10203e" stroke-width="4">
+      <path d="M 25,212 L 42,172 L 59,212"/>
+      <path d="M 33,196 L 51,196"/>
+      <path d="M 64,172 L 64,212 L 90,212"/>
+      <path d="M 108,192 L 128,192"/>
+      <path d="M 152,180 L 161,172 L 161,212"/>
+      <path d="M 152,212 L 170,212"/>
+      <path d="M 206,178 C 200,170 186,171 184,181 C 182,190 200,189 202,198 C 204,207 194,212 186,207"/>
+    </g>
+  </g>
+</svg>

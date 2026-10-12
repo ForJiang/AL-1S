@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <title>千年科学学园徽章：齿轮与电路</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="60" cy="60" r="52" fill="#e4f2ff" stroke="#10203e" stroke-width="3.5"/>
+    <g fill="#10203e">
+      <rect x="57" y="2" width="6" height="12"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(30 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(60 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(90 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(120 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(150 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(180 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(210 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(240 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(270 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(300 60 60)"/>
+      <rect x="57" y="2" width="6" height="12" transform="rotate(330 60 60)"/>
+    </g>
+    <circle cx="60" cy="60" r="42" fill="#ffffff" stroke="#10203e" stroke-width="2.5"/>
+    <g fill="none" stroke="#2f8fe8" stroke-width="2.5">
+      <path d="M 32,46 L 44,46 L 50,38 L 58,38"/>
+      <path d="M 88,74 L 76,74 L 70,82 L 62,82"/>
+      <path d="M 38,80 L 38,68"/>
+      <path d="M 82,36 L 82,48"/>
+    </g>
+    <g fill="#10203e">
+      <circle cx="32" cy="46" r="2.5"/>
+      <circle cx="58" cy="38" r="2.5"/>
+      <circle cx="88" cy="74" r="2.5"/>
+      <circle cx="62" cy="82" r="2.5"/>
+      <circle cx="38" cy="80" r="2.5"/>
+      <circle cx="38" cy="68" r="2.5"/>
+      <circle cx="82" cy="36" r="2.5"/>
+      <circle cx="82" cy="48" r="2.5"/>
+    </g>
+    <path d="M 60,36 L 65.5,54.5 L 84,60 L 65.5,65.5 L 60,84 L 54.5,65.5 L 36,60 L 54.5,54.5 Z"
+          fill="#ffd94a" stroke="#10203e" stroke-width="2.5"/>
+  </g>
+</svg>

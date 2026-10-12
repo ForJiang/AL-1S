@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <title>科技网格平铺背景</title>
+  <g stroke="#b9d4f2" stroke-width="1">
+    <line x1="0" y1="0" x2="60" y2="0"/>
+    <line x1="0" y1="30" x2="60" y2="30"/>
+    <line x1="0" y1="60" x2="60" y2="60"/>
+    <line x1="0" y1="0" x2="0" y2="60"/>
+    <line x1="30" y1="0" x2="30" y2="60"/>
+    <line x1="60" y1="0" x2="60" y2="60"/>
+  </g>
+  <g fill="#6fc0f7">
+    <circle cx="0" cy="0" r="2"/>
+    <circle cx="30" cy="0" r="2"/>
+    <circle cx="60" cy="0" r="2"/>
+    <circle cx="0" cy="30" r="2"/>
+    <circle cx="30" cy="30" r="2"/>
+    <circle cx="60" cy="30" r="2"/>
+    <circle cx="0" cy="60" r="2"/>
+    <circle cx="30" cy="60" r="2"/>
+    <circle cx="60" cy="60" r="2"/>
+  </g>
+</svg>

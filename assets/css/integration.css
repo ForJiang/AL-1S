@@ -1,0 +1,175 @@
+/*!
+ * AL-1S · assets/css/integration.css
+ * 合并期补丁（编排者，2026-10-12）：W1 CSS 与 W3 main.js 并行开发后，W3 已把绝大多数
+ * 动态类名对齐到 W1 的实际选择器；本文件只保留 W1 CSS 未覆盖、且不改 DOM 就无法成立的
+ * 少数补丁（在 sections.css 之后加载）：
+ *   1. [hidden] 强制隐藏（.gacha-overlay{display:grid} 等会压过 UA 默认样式）
+ *   2. #profile-rows：W3 直排 dt/dd（W1 预期 div 包裹）→ 两列网格
+ *   3. #story-list .ba-acc-body-inner：正文内边距（W1 只有 .story-text 有 padding）
+ *   4. .v-item：W3 的 6 个子元素显式网格落位（W1 的 1fr auto 自动放置会错行）
+ *   5. 各类空态 / 备注 / mission-tag--other / quiz-prev:disabled
+ * 门禁：tools/check_css.py；不改 W1/W2/W3 的文件。
+ */
+
+/* ═══════════════ 1. [hidden] 强制隐藏 ═══════════════ */
+/* main.js 用 hidden 属性控制 #boot / #voice-now / #gacha-overlay / #mt-typing / #quiz-result 等；
+   W1 的 .gacha-overlay{display:grid}、#voice-now 等规则会压过 [hidden] 的 UA 默认 display:none。 */
+[hidden] { display: none !important; }
+
+/* ═══════════════ 2. #profile — dl 直排（W3 输出 dt.profile-row-k / dd.profile-row-v） ═══════════════ */
+/* W1 的 .profile-rows 预期「每行一个 div 包裹」；W3 直接输出 dt/dd，改为两列网格逐行交替 */
+#profile-rows {
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--sp-4);
+}
+
+#profile-rows > dt,
+#profile-rows > dd {
+  padding: var(--sp-2) 0;
+  border-bottom: 1px dashed var(--panel-border);
+}
+
+#profile-rows .profile-row-k {
+  font-size: var(--fs-s);
+  font-weight: 700;
+  color: var(--text-body);
+  white-space: nowrap;
+}
+
+#profile-rows .profile-row-v {
+  text-align: right;
+  font-weight: 800;
+  color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════ 3. #stories — 正文内层 ═══════════════ */
+#story-list .ba-acc-body-inner {
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+  font-size: var(--fs-m);
+  line-height: 1.95;
+  color: var(--text-body);
+  white-space: pre-line; /* 保留台词文本的单换行 */
+}
+
+#story-list .ba-acc-body-inner p + p { margin-top: var(--sp-3); }
+
+/* ═══════════════ 4. #voices — v-item 子元素显式落位 ═══════════════ */
+/* W3 DOM 顺序：v-jp, v-play, v-zh, v-wave, v-en, v-note。
+   W1 的 grid-template-columns:1fr auto 自动放置会把 v-wave/v-note 挤到第二列，故显式指定：
+   左列文本四行（jp/zh/en/note），中列波形，右列播放按钮。 */
+.v-item,
+.voice-item {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+}
+
+.v-item > .v-jp,
+.voice-item > .v-jp { grid-area: 1 / 1; }
+
+.v-item > .v-zh,
+.voice-item > .v-zh { grid-area: 2 / 1; }
+
+.v-item > .v-en,
+.voice-item > .v-en { grid-area: 3 / 1; }
+
+.v-item > .v-note,
+.voice-item > .v-note { grid-area: 4 / 1; }
+
+.v-item > .v-wave,
+.voice-item > .v-wave {
+  grid-area: 1 / 2;
+  align-self: center;
+}
+
+.v-item > .v-play,
+.voice-item > .v-play {
+  grid-area: 1 / 3;
+  align-self: center;
+}
+
+/* ═══════════════ 5. 空态 / 备注 / 杂项 ═══════════════ */
+.voice-empty,
+.memoria-empty,
+.weapon-stats-empty,
+.ba-tabs-empty,
+.timeline-empty,
+.quiz-empty,
+.mt-empty,
+.mt-contacts-empty,
+.skill-values-empty {
+  padding: var(--sp-5);
+  text-align: center;
+  font-size: var(--fs-s);
+  color: var(--text-body);
+  border: 1px dashed var(--panel-border);
+  border-radius: var(--r-m);
+  background: var(--bg-tint);
+}
+
+.mt-empty,
+.mt-contacts-empty {
+  border: 0;
+  background: transparent;
+}
+
+.timeline-empty { list-style: none; }
+
+/* 技能数值表下的「已达上限」备注（W1 只有表内样式） */
+.skill-values-note {
+  margin-top: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .06em;
+  color: var(--ba-yellow-300);
+}
+
+.skill-values-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* 成长公式里的字段名加粗（W1 只样式化容器 .stat-formula） */
+.stat-formula-k {
+  font-weight: 700;
+  color: var(--ba-blue-300);
+}
+
+/* 年表未知 type 的中性配色（W1 只备了 release/event/story/rerun 四色） */
+.mission-tag--other {
+  background: var(--bg-tint-2);
+  border-color: var(--panel-border);
+  color: var(--text-body);
+}
+
+/* 检定上一题按钮的禁用态（ba-btn 无 disabled 皮肤） */
+.quiz-prev:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 结算卡顶部小标签（W1 只样式化 .quiz-result / .quiz-result-score） */
+.quiz-result-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-s);
+  letter-spacing: .22em;
+  color: var(--accent-strong);
+}
+
+/* ═══════════════ 6. 招募彩蛋演出重触发 ═══════════════ */
+/* main.js 每次召唤前 remove → 强制回流 → add，配合本规则实现动画重放 */
+.gacha-burst.is-run { animation: ba-burst-spin 26s linear infinite; }
+
+.gacha-card.is-run { animation: ba-pop-in .55s var(--ease-pop) both; }
+
+.gacha-card.is-run::after { animation: ba-shine 2.6s var(--ease-soft) .5s infinite; }
+
+/* ═══════════════ 7. 响应式补丁 ═══════════════ */
+@media (max-width: 520px) {
+  #profile-rows { grid-template-columns: minmax(0, 1fr); }
+  #profile-rows .profile-row-v { text-align: left; }
+  #profile-rows > dt { border-bottom: 0; padding-bottom: 0; }
+  .v-item, .voice-item { gap: var(--sp-3); }
+  .v-item > .v-wave, .voice-item > .v-wave { display: none; }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <title>记忆局限卡面四：星空</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect width="300" height="420" fill="#10203e"/>
+    <g fill="#ffe886">
+      <circle cx="40" cy="50" r="3"/>
+      <circle cx="80" cy="110" r="2"/>
+      <circle cx="250" cy="60" r="3.5"/>
+      <circle cx="220" cy="140" r="2"/>
+      <circle cx="60" cy="200" r="2.5"/>
+      <circle cx="270" cy="220" r="3"/>
+      <circle cx="150" cy="40" r="2"/>
+    </g>
+    <g fill="#ffffff">
+      <path d="M 200,80 L 203,90 L 213,93 L 203,96 L 200,106 L 197,96 L 187,93 L 197,90 Z"/>
+      <path d="M 110,150 L 112,158 L 120,160 L 112,162 L 110,170 L 108,162 L 100,160 L 108,158 Z"/>
+    </g>
+    <circle cx="150" cy="170" r="46" fill="#2f8fe8" stroke="#c8e8ff" stroke-width="3"/>
+    <ellipse cx="150" cy="170" rx="76" ry="24" fill="none" stroke="#9ad8ff" stroke-width="4" transform="rotate(-18 150 170)"/>
+    <polygon points="250,164 259.71,168.5 259.71,177.5 250,182 240.29,177.5 240.29,168.5"
+             fill="#ffd94a" stroke="#10203e" stroke-width="2.5"/>
+    <rect y="280" width="300" height="140" fill="#0a1428"/>
+    <rect y="280" width="300" height="5" fill="#ffd94a"/>
+    <polygon points="26,340 36,345 36,355 26,360 16,355 16,345" fill="#183054" stroke="#4aa8f0" stroke-width="2"/>
+    <g stroke="#22406e" stroke-width="3">
+      <line x1="48" y1="340" x2="250" y2="340"/>
+      <line x1="48" y1="356" x2="200" y2="356"/>
+    </g>
+    <rect x="1" y="1" width="298" height="418" fill="none" stroke="#10203e" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AL-1S · 天童爱丽丝 / 蔚蓝档案角色终端</title>
+<meta name="description" content="AL-1S —— 蔚蓝档案（Blue Archive）天童爱丽丝主题粉丝终端：角色档案、战斗数值、技能、羁绊故事、语音、MomoTalk 模拟与记忆局限。非官方粉丝作品。">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/sections.css">
+<link rel="stylesheet" href="assets/css/integration.css">
+</head>
+<body class="booting">
+
+<!-- ═══════════ 系统启动层 ═══════════ -->
+<div id="boot" aria-hidden="true">
+  <div class="boot-inner">
+    <div class="boot-hex"><img src="assets/img/logo-al1s.svg" alt=""></div>
+    <div id="boot-title" class="boot-title" data-i18n="ui.boot.title">AL-1S 系统启动中</div>
+    <div id="boot-log" class="boot-log" aria-live="polite"></div>
+    <div class="boot-track"><div id="boot-bar" class="boot-bar"></div></div>
+    <div class="boot-foot"><span id="boot-pct" class="boot-pct">0%</span><span class="boot-hint">MILLENNIUM · CLEANING &amp; CLEARING</span></div>
+  </div>
+</div>
+
+<!-- ═══════════ 顶部导航 ═══════════ -->
+<header id="site-nav">
+  <a class="nav-brand" href="#hero" data-nav="hero">
+    <img class="nav-brand-logo" src="assets/img/logo-al1s.svg" alt="AL-1S">
+    <span class="nav-brand-text">AL-1S</span>
+  </a>
+  <nav class="nav-links" aria-label="主导航">
+    <a data-nav="profile"  href="#profile"  data-i18n="ui.nav.profile">档案</a>
+    <a data-nav="stats"    href="#stats"    data-i18n="ui.nav.stats">数值</a>
+    <a data-nav="skills"   href="#skills"   data-i18n="ui.nav.skills">技能</a>
+    <a data-nav="stories"  href="#stories"  data-i18n="ui.nav.stories">故事</a>
+    <a data-nav="voices"   href="#voices"   data-i18n="ui.nav.voices">语音</a>
+    <a data-nav="momotalk" href="#momotalk" data-i18n="ui.nav.momotalk">MomoTalk</a>
+    <a data-nav="memoria"  href="#memoria"  data-i18n="ui.nav.memoria">记忆局限</a>
+    <a data-nav="timeline" href="#timeline" data-i18n="ui.nav.timeline">年表</a>
+    <a data-nav="quiz"     href="#quiz"     data-i18n="ui.nav.quiz">机器人检定</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="语言切换">
+      <button id="lang-zh" class="lang-btn is-active" type="button" lang="zh-CN">中</button>
+      <button id="lang-ja" class="lang-btn" type="button" lang="ja-JP">日</button>
+      <button id="lang-en" class="lang-btn" type="button" lang="en">EN</button>
+    </div>
+    <button id="nav-burger" class="nav-burger" type="button" aria-label="菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div id="nav-progress" class="nav-progress"></div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a data-nav="profile"  href="#profile">档案</a>
+  <a data-nav="stats"    href="#stats">数值</a>
+  <a data-nav="skills"   href="#skills">技能</a>
+  <a data-nav="stories"  href="#stories">故事</a>
+  <a data-nav="voices"   href="#voices">语音</a>
+  <a data-nav="momotalk" href="#momotalk">MomoTalk</a>
+  <a data-nav="memoria"  href="#memoria">记忆局限</a>
+  <a data-nav="timeline" href="#timeline">年表</a>
+  <a data-nav="quiz"     href="#quiz">机器人检定</a>
+</div>
+
+<main>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero" class="sec-hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hex-bg"></div>
+    <div class="grid-bg"></div>
+    <div class="stripe-bg"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="mission-tag reveal" data-i18n="ui.hero.kicker">MILLENNIUM SCIENCE SCHOOL</div>
+      <div class="hero-logo-wrap reveal">
+        <img id="hero-logo" class="hero-logo" src="assets/img/logo-al1s.svg" alt="AL-1S" title="……?">
+      </div>
+      <h1 id="hero-title" class="hero-title reveal" data-i18n="ui.hero.title">天童爱丽丝</h1>
+      <p id="hero-sub" class="hero-sub reveal" data-i18n="ui.hero.sub">天童アリス · TENDŌ ALICE</p>
+      <p id="hero-tagline" class="hero-tagline reveal" data-i18n="ui.hero.tagline">清扫开始。我是，机器人少女。</p>
+      <div id="hero-badges" class="hero-badges reveal">
+        <span class="ba-badge ba-badge--school"><img id="profile-school" src="assets/img/badge-millennium.svg" alt=""><span data-i18n="ui.hero.badge1">千年科学学园</span></span>
+        <span class="ba-badge ba-badge--club"><img id="profile-club" src="assets/img/badge-cc.svg" alt=""><span data-i18n="ui.hero.badge2">C&amp;C 打扫与清除</span></span>
+      </div>
+      <div class="hero-cta reveal">
+        <a id="hero-cta-profile" class="ba-btn ba-btn--primary" href="#profile" data-i18n="ui.hero.ctaProfile">查看角色档案</a>
+        <a id="hero-cta-momotalk" class="ba-btn ba-btn--ghost" href="#momotalk" data-i18n="ui.hero.ctaMomotalk">打开 MomoTalk</a>
+        <button id="hero-cta-gacha" class="ba-btn ba-btn--yellow" type="button" data-i18n="ui.hero.ctaGacha">招募模拟</button>
+      </div>
+    </div>
+    <div class="hero-art-wrap">
+      <div id="hero-art" class="hero-art">
+        <img class="hero-halo" src="assets/img/halo-alice.svg" alt="" aria-hidden="true">
+        <img class="hero-figure" src="assets/img/alice-hero.svg" alt="天童爱丽丝立绘（粉丝原创示意）">
+      </div>
+    </div>
+  </div>
+  <a class="hero-scroll" href="#profile" data-i18n="ui.hero.scroll">向下滚动 ▼</a>
+</section>
+
+<!-- ═══════════ PROFILE 角色档案 ═══════════ -->
+<section id="profile" class="sec-profile">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.profile.kicker">MISSION 01 · 角色档案</div>
+      <h2 class="sec-head-title" data-i18n="ui.profile.title">学生资料</h2>
+      <p class="sec-head-sub" data-i18n="ui.profile.sub"></p>
+    </div>
+    <div class="profile-grid">
+      <article id="profile-card" class="ba-card profile-card reveal">
+        <div class="profile-card-top">
+          <div id="profile-stars" class="profile-stars" aria-label="rarity 3"></div>
+          <span class="ba-tag" data-i18n="ui.profile.modelLabel">机体型号</span>
+        </div>
+        <h3 class="profile-name" data-i18n="profile.name">天童爱丽丝</h3>
+        <p class="profile-reading" data-i18n="profile.reading"></p>
+        <dl id="profile-rows" class="profile-rows"></dl>
+        <blockquote id="profile-quote" class="profile-quote" data-i18n="profile.intro"></blockquote>
+        <div class="profile-model">
+          <img src="assets/img/halo-alice.svg" alt="" aria-hidden="true">
+          <p data-i18n="profile.modelNote"></p>
+        </div>
+      </article>
+      <div class="profile-side">
+        <div class="ba-panel profile-badges-panel reveal">
+          <img class="profile-badge-img" src="assets/img/badge-millennium.svg" alt="">
+          <div><strong data-i18n="profile.school"></strong><span data-i18n="ui.profile.schoolLabel">所属学园</span></div>
+        </div>
+        <div class="ba-panel profile-badges-panel reveal">
+          <img class="profile-badge-img" src="assets/img/badge-cc.svg" alt="">
+          <div><strong data-i18n="profile.club"></strong><span data-i18n="ui.profile.clubLabel">所属社团</span></div>
+        </div>
+        <div class="ba-panel profile-quote-panel reveal">
+          <span class="profile-quote-label" data-i18n="ui.profile.quoteLabel">登录语音</span>
+          <p data-i18n="profile.intro"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS 战斗数值 ═══════════ -->
+<section id="stats" class="sec-stats">
+  <div class="container">
+    <div class="sec-head sec-head--dark reveal">
+      <div class="mission-tag" data-i18n="ui.stats.kicker">MISSION 02 · 战斗数据</div>
+      <h2 class="sec-head-title" data-i18n="ui.stats.title">战斗数值</h2>
+      <p class="sec-head-sub" data-i18n="ui.stats.sub"></p>
+    </div>
+    <div class="ba-panel ba-panel--dark stats-panel reveal">
+      <div class="stats-controls">
+        <label class="stats-level-label" for="stat-level" data-i18n="ui.stats.levelLabel">等级</label>
+        <input id="stat-level" class="ba-slider" type="range" min="1" max="100" step="1" value="1">
+        <output id="stat-level-val" class="stats-level-val">Lv.1</output>
+      </div>
+      <div id="stat-bars" class="stat-bars"></div>
+      <div id="stat-grid" class="stat-grid"></div>
+      <p id="stat-formula" class="stat-formula"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS 技能 ═══════════ -->
+<section id="skills" class="sec-skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.skills.kicker">MISSION 03 · 技能资料</div>
+      <h2 class="sec-head-title" data-i18n="ui.skills.title">技能</h2>
+      <p class="sec-head-sub" data-i18n="ui.skills.sub"></p>
+    </div>
+    <div class="ba-panel skills-panel reveal">
+      <div id="skill-tabs" class="ba-tabs" role="tablist">
+        <button class="ba-tab is-active" type="button" role="tab" data-skill="ex"       data-i18n="ui.skills.tabEX">EX</button>
+        <button class="ba-tab"           type="button" role="tab" data-skill="basic"    data-i18n="ui.skills.tabBasic">基础</button>
+        <button class="ba-tab"           type="button" role="tab" data-skill="enhanced" data-i18n="ui.skills.tabEnhanced">强化</button>
+        <button class="ba-tab"           type="button" role="tab" data-skill="sub"      data-i18n="ui.skills.tabSub">辅助</button>
+      </div>
+      <div id="skill-detail" class="skill-detail">
+        <div class="skill-icon-wrap"><img id="skill-icon" class="skill-icon" src="assets/img/icon-skill-ex.svg" alt=""></div>
+        <div class="skill-main">
+          <h3 id="skill-name" class="skill-name"></h3>
+          <p id="skill-cost" class="skill-cost"></p>
+          <p id="skill-desc" class="skill-desc"></p>
+        </div>
+      </div>
+      <div class="skills-values">
+        <div class="stats-controls">
+          <label class="stats-level-label" for="skill-level" data-i18n="ui.skills.levelLabel">技能等级</label>
+          <input id="skill-level" class="ba-slider" type="range" min="1" max="10" step="1" value="1">
+          <output id="skill-level-val" class="stats-level-val">Lv.1</output>
+        </div>
+        <table id="skill-values" class="skill-values-table"></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WEAPON 专属武器 ═══════════ -->
+<section id="weapon" class="sec-weapon">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.weapon.kicker">MISSION 04 · 专属武器</div>
+      <h2 class="sec-head-title" data-i18n="ui.weapon.title">专属武器</h2>
+      <p class="sec-head-sub" data-i18n="ui.weapon.sub"></p>
+    </div>
+    <div class="ba-panel weapon-panel reveal">
+      <div class="weapon-art"><img id="weapon-icon" src="assets/img/icon-weapon.svg" alt=""></div>
+      <div class="weapon-body">
+        <h3 id="weapon-name" class="weapon-name"></h3>
+        <p id="weapon-desc" class="weapon-desc"></p>
+        <div class="weapon-levels" id="weapon-levels" role="group">
+          <button class="ba-btn ba-btn--primary weapon-lv is-active" type="button" data-wlv="1">Lv.1</button>
+          <button class="ba-btn ba-btn--ghost weapon-lv" type="button" data-wlv="max" data-i18n="ui.skills.maxLabel">MAX</button>
+        </div>
+        <div id="weapon-stats" class="weapon-stats"></div>
+        <div class="weapon-skill" id="weapon-skill">
+          <span class="ba-tag" data-i18n="ui.weapon.skillLabel">武器技能</span>
+          <h4 id="weapon-skill-name"></h4>
+          <p id="weapon-skill-desc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STORIES 羁绊故事 ═══════════ -->
+<section id="stories" class="sec-stories">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.stories.kicker">MISSION 05 · 羁绊故事</div>
+      <h2 class="sec-head-title" data-i18n="ui.stories.title">羁绊故事</h2>
+      <p class="sec-head-sub" data-i18n="ui.stories.sub"></p>
+    </div>
+    <div id="story-list" class="story-list"></div>
+    <p id="story-empty" class="story-empty" hidden data-i18n="ui.stories.empty">暂无故事数据。</p>
+  </div>
+</section>
+
+<!-- ═══════════ VOICES 语音 ═══════════ -->
+<section id="voices" class="sec-voices">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.voices.kicker">MISSION 06 · 语音记录</div>
+      <h2 class="sec-head-title" data-i18n="ui.voices.title">语音台词</h2>
+      <p class="sec-head-sub" data-i18n="ui.voices.sub"></p>
+    </div>
+    <div id="voice-tabs" class="ba-tabs voice-tabs" role="tablist"></div>
+    <div id="voice-list" class="voice-list"></div>
+    <div id="voice-now" class="voice-now" hidden>
+      <span class="voice-now-label" data-i18n="ui.voices.playing">正在播放</span>
+      <span id="voice-now-text" class="voice-now-text"></span>
+      <button id="voice-stop" class="ba-btn ba-btn--ghost voice-stop" type="button" data-i18n="ui.voices.stop">停止</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MOMOTALK ═══════════ -->
+<section id="momotalk" class="sec-momotalk">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.momotalk.kicker">MISSION 07 · 通讯模拟</div>
+      <h2 class="sec-head-title" data-i18n="ui.momotalk.title">MomoTalk 模拟</h2>
+      <p class="sec-head-sub" data-i18n="ui.momotalk.sub"></p>
+    </div>
+    <div id="mt-app" class="mt-app reveal">
+      <aside id="mt-sidebar" class="mt-sidebar">
+        <div class="mt-sidebar-head">
+          <span class="mt-app-name" data-i18n="ui.momotalk.appName">MomoTalk</span>
+          <span class="mt-app-status" data-i18n="ui.momotalk.appStatus">在线</span>
+        </div>
+        <div id="mt-contacts" class="mt-contacts"></div>
+      </aside>
+      <div class="mt-main">
+        <header class="mt-chat-head">
+          <img id="mt-avatar" class="mt-avatar" src="assets/img/avatar-alice.svg" alt="">
+          <div class="mt-chat-title">
+            <strong id="mt-name"></strong>
+            <span id="mt-status"></span>
+          </div>
+          <button id="mt-clear" class="mt-clear" type="button" data-i18n="ui.momotalk.clearChat">清空记录</button>
+        </header>
+        <div id="mt-chat" class="mt-chat" aria-live="polite"></div>
+        <div id="mt-typing" class="mt-typing" hidden><span></span><span></span><span></span><em data-i18n="ui.momotalk.typing">正在输入…</em></div>
+        <form class="mt-inputbar" id="mt-form">
+          <input id="mt-input" class="mt-input" type="text" autocomplete="off" data-i18n-ph="ui.momotalk.inputPlaceholder" placeholder="说点什么…">
+          <button id="mt-send" class="ba-btn ba-btn--primary mt-send" type="submit" data-i18n="ui.momotalk.send">发送</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MEMORIA 记忆局限 ═══════════ -->
+<section id="memoria" class="sec-memoria">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.memoria.kicker">MISSION 08 · 记忆局限</div>
+      <h2 class="sec-head-title" data-i18n="ui.memoria.title">记忆局限</h2>
+      <p class="sec-head-sub" data-i18n="ui.memoria.sub"></p>
+    </div>
+    <div id="memoria-grid" class="memoria-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════ TIMELINE 年表 ═══════════ -->
+<section id="timeline" class="sec-timeline">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.timeline.kicker">MISSION 09 · 活动年表</div>
+      <h2 class="sec-head-title" data-i18n="ui.timeline.title">活动年表</h2>
+      <p class="sec-head-sub" data-i18n="ui.timeline.sub"></p>
+    </div>
+    <ol id="timeline-list" class="timeline-list"></ol>
+  </div>
+</section>
+
+<!-- ═══════════ QUIZ 趣味检定 ═══════════ -->
+<section id="quiz" class="sec-quiz">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="mission-tag" data-i18n="ui.quiz.kicker">MISSION 10 · 趣味检定</div>
+      <h2 class="sec-head-title" data-i18n="ui.quiz.title">机器人少女检定</h2>
+      <p class="sec-head-sub" data-i18n="ui.quiz.sub"></p>
+    </div>
+    <div class="ba-panel quiz-panel reveal">
+      <div id="quiz-progress" class="quiz-progress"></div>
+      <div id="quiz-box" class="quiz-box"></div>
+      <div id="quiz-result" class="quiz-result" hidden></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ 页脚 ═══════════ -->
+<footer id="footer" class="sec-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/img/logo-al1s.svg" alt="AL-1S">
+        <div>
+          <strong>AL-1S</strong>
+          <span data-i18n="ui.footer.tagline">天童爱丽丝 · 机能扩充终端</span>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="页脚导航">
+        <a data-nav="profile" href="#profile" data-i18n="ui.nav.profile">档案</a>
+        <a data-nav="momotalk" href="#momotalk" data-i18n="ui.nav.momotalk">MomoTalk</a>
+        <a data-nav="timeline" href="#timeline" data-i18n="ui.nav.timeline">年表</a>
+        <a data-nav="quiz" href="#quiz" data-i18n="ui.nav.quiz">机器人检定</a>
+      </nav>
+    </div>
+    <p id="footer-disclaimer" class="footer-disclaimer" data-i18n="ui.footer.disclaimer"></p>
+    <p class="footer-credit" data-i18n="ui.footer.credit"></p>
+    <p class="footer-note" data-i18n="ui.footer.fanNote"></p>
+    <button id="back-top" class="ba-btn ba-btn--ghost back-top" type="button" data-i18n="ui.footer.backTop">回到顶部</button>
+  </div>
+</footer>
+
+<!-- ═══════════ 招募彩蛋 ═══════════ -->
+<div id="gacha-overlay" class="gacha-overlay" hidden>
+  <div class="gacha-burst" id="gacha-burst" aria-hidden="true"></div>
+  <div class="gacha-card" id="gacha-card" role="dialog" aria-modal="true">
+    <div class="gacha-card-stars">★★★</div>
+    <img class="gacha-card-art" src="assets/img/alice-hero.svg" alt="">
+    <div class="gacha-card-body">
+      <span class="gacha-card-tag">NEW</span>
+      <strong class="gacha-card-name" data-i18n="profile.name">天童爱丽丝</strong>
+      <span class="gacha-card-sub" data-i18n="ui.gacha.sub"></span>
+    </div>
+  </div>
+  <button id="gacha-close" class="ba-btn ba-btn--yellow gacha-close" type="button" data-i18n="ui.gacha.close">关闭</button>
+  <p class="gacha-hint" data-i18n="ui.gacha.hint"></p>
+</div>
+<div id="toast-root" class="toast-root" aria-live="polite"></div>
+<canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

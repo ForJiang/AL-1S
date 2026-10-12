@@ -1,0 +1,8 @@
+# 生成物 / 本地工具
+tools/data-dump.json
+__pycache__/
+*.pyc
+.DS_Store
+
+# 字体原始 TTF（重新子集化才需要，10MB；woff2 子集已入库）
+assets/fonts/src/

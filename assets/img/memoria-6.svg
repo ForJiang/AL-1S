@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <title>记忆局限卡面六：夏莱终端</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect width="300" height="420" fill="#e4f2ff"/>
+    <polygon points="230,145 200,214.3 100,214.3 70,145 100,75.7 200,75.7"
+             fill="#ffffff" stroke="#10203e" stroke-width="3.5"/>
+    <polygon points="194,145 172,183.1 128,183.1 106,145 128,106.9 172,106.9"
+             fill="none" stroke="#54e3ff" stroke-width="3"/>
+    <g stroke="#9ad8ff" stroke-width="2.5">
+      <line x1="150" y1="145" x2="194" y2="145"/>
+      <line x1="150" y1="145" x2="172" y2="183.1"/>
+      <line x1="150" y1="145" x2="128" y2="183.1"/>
+      <line x1="150" y1="145" x2="106" y2="145"/>
+      <line x1="150" y1="145" x2="128" y2="106.9"/>
+      <line x1="150" y1="145" x2="172" y2="106.9"/>
+    </g>
+    <g fill="#54e3ff" stroke="#10203e" stroke-width="2">
+      <circle cx="194" cy="145" r="5"/>
+      <circle cx="172" cy="183.1" r="5"/>
+      <circle cx="128" cy="183.1" r="5"/>
+      <circle cx="106" cy="145" r="5"/>
+      <circle cx="128" cy="106.9" r="5"/>
+      <circle cx="172" cy="106.9" r="5"/>
+    </g>
+    <circle cx="150" cy="145" r="10" fill="#ffd94a" stroke="#10203e" stroke-width="2.5"/>
+    <polygon points="48,48 60,54 60,66 48,72 36,66 36,54" fill="none" stroke="#6fc0f7" stroke-width="2.5"/>
+    <polygon points="252,224 261,229 261,238 252,243 243,238 243,229" fill="#ffd94a" stroke="#10203e" stroke-width="2"/>
+    <rect y="280" width="300" height="140" fill="#10203e"/>
+    <rect y="280" width="300" height="5" fill="#ffd94a"/>
+    <polygon points="26,340 36,345 36,355 26,360 16,355 16,345" fill="#183054" stroke="#4aa8f0" stroke-width="2"/>
+    <g stroke="#22406e" stroke-width="3">
+      <line x1="48" y1="340" x2="250" y2="340"/>
+      <line x1="48" y1="356" x2="200" y2="356"/>
+    </g>
+    <rect x="1" y="1" width="298" height="418" fill="none" stroke="#10203e" stroke-width="2"/>
+  </g>
+</svg>

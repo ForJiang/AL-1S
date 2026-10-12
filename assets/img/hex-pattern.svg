@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104">
+  <title>六边形网格平铺背景</title>
+  <defs>
+    <pattern id="hexp" width="60" height="34.64" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#9ad8ff" stroke-width="1.5" stroke-linejoin="round">
+        <polygon points="20,0 30,17.32 10,17.32 0,0 10,-17.32 30,-17.32"/>
+        <polygon points="80,0 90,17.32 70,17.32 60,0 70,-17.32 90,-17.32"/>
+        <polygon points="50,17.32 60,34.64 40,34.64 30,17.32 40,0 60,0"/>
+        <polygon points="-10,17.32 0,34.64 -20,34.64 -30,17.32 -20,0 0,0"/>
+        <polygon points="110,17.32 120,34.64 100,34.64 90,17.32 100,0 120,0"/>
+        <polygon points="50,-17.32 60,0 40,0 30,-17.32 40,-34.64 60,-34.64"/>
+        <polygon points="50,51.96 60,69.28 40,69.28 30,51.96 40,34.64 60,34.64"/>
+        <polygon points="20,34.64 30,51.96 10,51.96 0,34.64 10,17.32 30,17.32"/>
+        <polygon points="80,34.64 90,51.96 70,51.96 60,34.64 70,17.32 90,17.32"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="120" height="104" fill="url(#hexp)"/>
+</svg>

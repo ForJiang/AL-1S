@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <title>记忆局限卡面五：弹仓</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect width="300" height="420" fill="#e4f2ff"/>
+    <polygon points="238,140 206,216.2 94,216.2 62,140 94,63.8 206,63.8"
+             fill="#ffffff" stroke="#10203e" stroke-width="3.5"/>
+    <g>
+      <rect x="76" y="96" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="76" y="96" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="116" y="96" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="116" y="96" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="156" y="96" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="156" y="96" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="76" y="132" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="76" y="132" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="116" y="132" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="116" y="132" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="156" y="132" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="156" y="132" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="76" y="168" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="76" y="168" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="116" y="168" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="116" y="168" width="11" height="16" rx="4" fill="#ffd94a"/>
+      <rect x="156" y="168" width="54" height="16" rx="8" fill="#10203e"/>
+      <rect x="156" y="168" width="11" height="16" rx="4" fill="#ffd94a"/>
+    </g>
+    <rect y="280" width="300" height="140" fill="#10203e"/>
+    <rect y="280" width="300" height="5" fill="#ffd94a"/>
+    <polygon points="26,340 36,345 36,355 26,360 16,355 16,345" fill="#183054" stroke="#4aa8f0" stroke-width="2"/>
+    <g stroke="#22406e" stroke-width="3">
+      <line x1="48" y1="340" x2="250" y2="340"/>
+      <line x1="48" y1="356" x2="200" y2="356"/>
+    </g>
+    <rect x="1" y="1" width="298" height="418" fill="none" stroke="#10203e" stroke-width="2"/>
+  </g>
+</svg>

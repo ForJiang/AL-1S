@@ -1,0 +1,1667 @@
+/* ==========================================================================
+   AL-1S · sections.css — 区块层
+   按 index.html 的 DOM 顺序逐段实现：
+   #boot 启动层 / #hero / #profile / #stats / #skills / #weapon / #stories
+   / #voices / #momotalk / #memoria / #timeline / #quiz / #footer 彩蛋层
+   组件通用样式在 components.css；此处只写区块专属布局与氛围。
+   依赖：tokens.css base.css layout.css components.css
+   ========================================================================== */
+
+/* ==========================================================================
+   1. #boot — 系统启动层（fixed 全屏遮罩）
+   ========================================================================== */
+
+#boot {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-boot);
+  display: grid;
+  place-items: center;
+  padding: var(--sp-5);
+  color: var(--text-on-dark);
+  background-color: var(--ba-navy-900);
+  background-image:
+    var(--img-hex),
+    radial-gradient(900px 480px at 50% -10%, rgba(47, 143, 232, .38), transparent 62%),
+    linear-gradient(180deg, var(--ba-navy-900) 0%, var(--ba-navy-800) 100%);
+  background-repeat: repeat, no-repeat, no-repeat;
+  background-size: var(--tile-hex), cover, cover;
+}
+
+.boot-inner {
+  position: relative;
+  width: min(92vw, 560px);
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-4);
+  text-align: center;
+}
+
+.boot-hex {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+}
+
+.boot-hex img {
+  width: 84px;
+  height: 84px;
+  animation: ba-halo-spin 14s linear infinite;
+  filter: drop-shadow(0 0 18px rgba(84, 227, 255, .55));
+}
+
+.boot-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--text-on-dark-strong);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .5);
+}
+
+/* 逐行由 main.js 追加；最后一行带闪烁光标 */
+.boot-log {
+  width: 100%;
+  min-height: 128px;
+  max-height: 30svh;
+  overflow: hidden;
+  padding: var(--sp-4);
+  border: 1px solid var(--panel-border-dark);
+  border-radius: var(--r-m);
+  background: rgba(4, 10, 24, .66);
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, .45);
+  font-family: var(--font-mono);
+  font-size: var(--fs-s);
+  line-height: 1.95;
+  text-align: left;
+  color: var(--ba-blue-200);
+}
+
+#boot-log > * {
+  animation: ba-slide-up .26s var(--ease-pop) both;
+  word-break: break-word;
+}
+
+#boot-log > *:last-child::after {
+  content: "▍";
+  margin-left: 2px;
+  color: var(--ba-yellow-400);
+  animation: ba-blink 1s steps(1) infinite;
+}
+
+.boot-track {
+  width: 100%;
+  height: 12px;
+  padding: 2px;
+  border: 1px solid var(--panel-border-dark);
+  border-radius: var(--r-pill);
+  background: rgba(4, 10, 24, .6);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .5);
+}
+
+/* #boot-bar 宽度走 --pct（main.js 写入） */
+.boot-bar {
+  height: 100%;
+  width: var(--pct, 0%);
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--ba-blue-600) 0%, var(--ba-cyan-400) 60%, var(--ba-yellow-400) 100%);
+  box-shadow: 0 0 12px rgba(84, 227, 255, .6);
+  transition: width .3s var(--ease-soft);
+}
+
+.boot-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-on-dark-soft);
+}
+
+.boot-pct {
+  font-size: var(--fs-l);
+  color: var(--ba-yellow-300);
+  font-variant-numeric: tabular-nums;
+}
+
+.boot-hint {
+  letter-spacing: .18em;
+  text-align: right;
+}
+
+/* ==========================================================================
+   2. #hero — 首屏
+   ========================================================================== */
+
+#hero {
+  display: grid;
+  align-items: center;
+  min-height: 100vh;                 /* 回退 */
+  min-height: 100svh;
+  padding-block: calc(var(--nav-h) + var(--sp-8)) var(--sp-12);
+  overflow: clip;
+}
+
+@supports not (height: 100svh) {
+  #hero {
+    min-height: 100vh;
+  }
+}
+
+/* ---- 2.1 三层视差氛围 ---- */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-bg .hex-bg {
+  position: absolute;
+  inset: -12% -6%;
+  opacity: .5;
+  animation: ba-drift 20s var(--ease-soft) infinite;
+}
+
+.hero-bg .grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: .26;
+  background-size: var(--tile-grid);
+}
+
+.hero-bg .stripe-bg {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: 0;
+  height: 42%;
+  opacity: .14;
+  transform: skewY(-4deg);
+}
+
+/* ---- 2.2 两栏主体 ---- */
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.hero-copy {
+  display: grid;
+  justify-items: start;
+  gap: var(--sp-4);
+  min-width: 0;
+}
+
+/* ---- 2.3 Logo / 标题 / 标语 ---- */
+.hero-logo-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-3);
+  border-radius: var(--r-l);
+}
+
+.hero-logo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--img-hex);
+  background-repeat: repeat;
+  background-size: var(--tile-hex);
+  border-radius: var(--r-l);
+  opacity: .5;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 10%, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 10%, transparent 72%);
+  pointer-events: none;
+}
+
+#hero-logo,
+.hero-logo {
+  position: relative;
+  width: 160px;
+  height: auto;
+  cursor: pointer;                   /* 暗示可点（彩蛋触发） */
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, .45));
+  transition: transform var(--dur) var(--ease-pop), filter var(--dur) var(--ease-soft);
+}
+
+#hero-logo:hover,
+.hero-logo:hover {
+  transform: translateY(-5px) rotate(-3deg) scale(1.04);
+  filter: drop-shadow(0 16px 28px rgba(84, 227, 255, .5));
+}
+
+#hero-logo:active,
+.hero-logo:active {
+  transform: scale(.97);
+}
+
+#hero-title,
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(44px, 8vw, 96px);
+  line-height: 1.06;
+  letter-spacing: .01em;
+  color: var(--ba-navy-900);
+  /* 深蓝字 + 白色描边质感（多层 text-shadow 描边） */
+  text-shadow:
+    -2px -2px 0 var(--ba-white), 2px -2px 0 var(--ba-white),
+    -2px 2px 0 var(--ba-white), 2px 2px 0 var(--ba-white),
+    -3px 0 0 var(--ba-white), 3px 0 0 var(--ba-white),
+    0 -3px 0 var(--ba-white), 0 3px 0 var(--ba-white),
+    0 10px 26px rgba(4, 10, 24, .5);
+}
+
+#hero-sub,
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: clamp(.8rem, 1.6vw, 1.05rem);
+  letter-spacing: .22em;
+  color: var(--ba-blue-200);
+  text-transform: uppercase;
+}
+
+/* 黄底深字胶囊 */
+#hero-tagline,
+.hero-tagline {
+  display: inline-block;
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: var(--r-pill);
+  background: var(--highlight-grad);
+  color: var(--text-on-yellow);
+  font-family: var(--font-display);
+  font-size: var(--fs-l);
+  font-weight: 700;
+  line-height: 1.5;
+  box-shadow: 0 8px 22px rgba(255, 201, 60, .34), var(--shadow-hi);
+}
+
+/* ---- 2.4 徽章 / CTA ---- */
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
+}
+
+/* ---- 2.5 立绘 ---- */
+.hero-art-wrap {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+}
+
+.hero-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+/* 机械光环：绝对定位 + 旋转浮动 */
+.hero-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(94%, 470px);
+  height: auto;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  opacity: .92;
+  animation: ba-halo-spin 26s linear infinite, ba-float 7s var(--ease-soft) infinite;
+  filter: drop-shadow(0 0 26px rgba(84, 227, 255, .45));
+  pointer-events: none;
+}
+
+.hero-figure {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  animation: ba-float 6s var(--ease-soft) infinite;
+  filter: drop-shadow(0 26px 42px rgba(2, 8, 20, .55));
+}
+
+/* ---- 2.6 底部滚动提示 ---- */
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-5);
+  translate: -50% 0;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-pill);
+  background: rgba(10, 20, 40, .42);
+  border: 1px solid var(--panel-border-dark);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ba-blue-200);
+  animation: ba-bounce 1.9s var(--ease-soft) infinite;
+  transition: color var(--dur-fast) var(--ease-soft), background var(--dur-fast) var(--ease-soft);
+}
+
+.hero-scroll:hover {
+  color: var(--ba-white);
+  background: rgba(28, 111, 208, .62);
+}
+
+/* ==========================================================================
+   3. #profile — 角色档案
+   ========================================================================== */
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  gap: var(--sp-6);
+  align-items: start;
+}
+
+.profile-card {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+}
+
+.profile-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+/* 金色星横排 */
+.profile-stars {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 20px;
+}
+
+.profile-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-strong);
+}
+
+.profile-reading {
+  font-family: var(--font-mono);
+  font-size: var(--fs-s);
+  letter-spacing: .18em;
+  color: var(--accent-strong);
+}
+
+/* dl 网格：左标签右值 */
+.profile-rows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 0 var(--sp-6);
+}
+
+.profile-rows > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+  border-bottom: 1px dashed var(--panel-border);
+}
+
+.profile-rows dt {
+  font-size: var(--fs-s);
+  font-weight: 700;
+  color: var(--text-body);
+  white-space: nowrap;
+}
+
+.profile-rows dd {
+  text-align: right;
+  font-weight: 800;
+  color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 左侧 4px 蓝条引用块 */
+.profile-quote {
+  position: relative;
+  padding: var(--sp-4) var(--sp-5) var(--sp-4) var(--sp-6);
+  border-left: 4px solid var(--ba-blue-600);
+  border-radius: 0 var(--r-m) var(--r-m) 0;
+  background: var(--accent-soft);
+  font-size: var(--fs-l);
+  line-height: 1.9;
+  color: var(--text-strong);
+}
+
+.profile-quote::before {
+  content: "“";
+  position: absolute;
+  top: var(--sp-1);
+  left: var(--sp-3);
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--ba-blue-300);
+  pointer-events: none;
+}
+
+/* 小号说明框（dashed） */
+.profile-model {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 2px dashed var(--ba-blue-300);
+  border-radius: var(--r-m);
+  background: rgba(228, 242, 255, .55);
+  font-size: var(--fs-s);
+  line-height: 1.8;
+  color: var(--text-body);
+}
+
+.profile-model img {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  animation: ba-halo-spin 20s linear infinite;
+}
+
+.profile-model p {
+  min-width: 0;
+}
+
+/* 侧栏 */
+.profile-side {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+}
+
+.profile-badges-panel {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+}
+
+.profile-badge-img {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+}
+
+.profile-badges-panel strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-l);
+  color: var(--text-strong);
+}
+
+.profile-badges-panel span {
+  display: block;
+  font-size: var(--fs-xs);
+  letter-spacing: .1em;
+  color: var(--text-body);
+}
+
+.profile-quote-panel {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+}
+
+.profile-quote-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.profile-quote-panel p {
+  font-size: var(--fs-m);
+  line-height: 1.85;
+}
+
+/* ==========================================================================
+   4. #stats — 战斗数值（深蓝面板）
+   ========================================================================== */
+
+.stats-panel {
+  display: grid;
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+}
+
+.stats-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.stats-level-label {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ba-yellow-300);
+}
+
+.stats-controls .ba-slider {
+  flex: 1 1 240px;
+  min-width: 150px;
+}
+
+.stats-level-val {
+  flex: 0 0 auto;
+  min-width: 76px;
+  padding: var(--sp-1) var(--sp-3);
+  text-align: center;
+  border: 1px solid var(--panel-border-dark);
+  border-radius: var(--r-s);
+  background: rgba(4, 10, 24, .55);
+  font-family: var(--font-mono);
+  font-size: var(--fs-l);
+  color: var(--ba-white);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 每行：标签 + meter + 数值 */
+.stat-bars {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) 88px;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.stat-row-label {
+  font-size: var(--fs-s);
+  font-weight: 700;
+  color: var(--text-on-dark);
+}
+
+.stat-row .ba-meter {
+  height: 12px;
+}
+
+.stat-row-val {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: var(--fs-m);
+  color: var(--ba-yellow-300);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 响应式网格卡片 */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: var(--sp-3);
+}
+
+.stat-cell {
+  padding: var(--sp-3);
+  text-align: center;
+  border: 1px solid var(--panel-border-dark);
+  border-radius: var(--r-m);
+  background: rgba(4, 10, 24, .42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+  transition: transform var(--dur-fast) var(--ease-pop), border-color var(--dur-fast) var(--ease-soft);
+}
+
+.stat-cell:hover {
+  transform: translateY(-2px);
+  border-color: var(--ba-blue-400);
+}
+
+.stat-cell-label {
+  display: block;
+  font-size: var(--fs-xs);
+  letter-spacing: .08em;
+  color: var(--text-on-dark-soft);
+}
+
+.stat-cell-val {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  color: var(--ba-white);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-formula {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.9;
+  color: var(--text-on-dark-soft);
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   5. #skills — 技能
+   ========================================================================== */
+
+.skills-panel {
+  display: grid;
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+}
+
+#skill-tabs {
+  justify-content: flex-start;
+}
+
+/* 图标 96px + 主文本 */
+.skill-detail {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--sp-5);
+  padding: var(--sp-5);
+  border: 1px solid var(--ba-blue-200);
+  border-radius: var(--r-m);
+  background: var(--accent-grad-soft);
+}
+
+.skill-icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border: 2px solid var(--ba-blue-300);
+  border-radius: var(--r-m);
+  background: var(--ba-white);
+  box-shadow: 0 8px 18px rgba(16, 32, 62, .16);
+}
+
+.skill-icon {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+
+.skill-main {
+  display: grid;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.skill-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+/* 黄签 */
+.skill-cost {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-4);
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: var(--r-pill);
+  background: var(--highlight-grad);
+  color: var(--text-on-yellow);
+  font-family: var(--font-mono);
+  font-size: var(--fs-s);
+  letter-spacing: .1em;
+  box-shadow: var(--shadow-hi);
+}
+
+.skill-desc {
+  font-size: var(--fs-l);
+  line-height: 1.9;
+  color: var(--text-body);
+}
+
+.skills-values {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+/* 斑马纹 + 等宽数字 */
+.skill-values-table {
+  font-size: var(--fs-m);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--r-m);
+  overflow: hidden;
+}
+
+.skill-values-table th {
+  padding: var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-s);
+  letter-spacing: .06em;
+  color: var(--ba-white);
+  background: var(--accent-grad);
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.skill-values-table td {
+  padding: var(--sp-3);
+  border-bottom: 1px solid var(--panel-border);
+  color: var(--text-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-values-table tbody tr:nth-child(even) {
+  background: var(--bg-tint);
+}
+
+.skill-values-table tbody tr:hover {
+  background: var(--accent-soft);
+}
+
+.skill-values-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.skill-values-table td:first-child {
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+/* ==========================================================================
+   6. #weapon — 专属武器
+   ========================================================================== */
+
+.weapon-panel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--sp-6);
+  padding: var(--sp-6);
+}
+
+.weapon-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 180px;
+  height: 180px;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--r-l);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(84, 227, 255, .3), transparent 66%),
+    var(--ba-white);
+  box-shadow: var(--shadow-panel);
+}
+
+/* 武器光晕 */
+.weapon-art::after {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(84, 227, 255, .38), transparent 68%);
+  animation: ba-pulse 3.6s var(--ease-soft) infinite;
+  pointer-events: none;
+}
+
+.weapon-art img {
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(16, 32, 62, .28));
+}
+
+.weapon-body {
+  display: grid;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.weapon-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.weapon-desc {
+  font-size: var(--fs-m);
+  line-height: 1.85;
+  color: var(--text-body);
+}
+
+.weapon-levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.weapon-lv {
+  min-width: 92px;
+  padding: var(--sp-2) var(--sp-4);
+  font-size: var(--fs-s);
+}
+
+/* 档位激活态（ghost 变体也走黄色高亮） */
+.ba-btn--ghost.weapon-lv.is-active {
+  color: var(--text-on-yellow);
+  background: var(--highlight-grad);
+  border-color: transparent;
+  box-shadow: var(--shadow-hi), 0 0 0 3px rgba(255, 201, 60, .38);
+}
+
+.ba-btn--primary.weapon-lv.is-active {
+  box-shadow: var(--shadow-hi), 0 0 0 3px rgba(255, 201, 60, .45);
+}
+
+.weapon-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: var(--sp-3);
+}
+
+.weapon-stat {
+  padding: var(--sp-3);
+  text-align: center;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--r-m);
+  background: var(--bg-tint);
+}
+
+.weapon-stat-label {
+  display: block;
+  font-size: var(--fs-xs);
+  letter-spacing: .06em;
+  color: var(--text-body);
+}
+
+.weapon-stat-val {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-l);
+  color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.weapon-skill {
+  display: grid;
+  gap: var(--sp-2);
+  justify-items: start;
+  margin-top: var(--sp-2);
+  padding: var(--sp-4);
+  border: 1px dashed var(--ba-blue-300);
+  border-radius: var(--r-m);
+  background: var(--accent-soft);
+}
+
+.weapon-skill h4 {
+  font-family: var(--font-display);
+  font-size: var(--fs-l);
+  color: var(--text-strong);
+}
+
+.weapon-skill p {
+  font-size: var(--fs-m);
+  line-height: 1.8;
+}
+
+/* ==========================================================================
+   7. #stories — 羁绊故事（手风琴）
+   ========================================================================== */
+
+#story-list,
+.story-list {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+/* story-* 与 ba-acc-* 等价；两者都能开合 */
+.story-item,
+#story-list .ba-acc-item {
+  border-radius: var(--r-m);
+}
+
+.story-head,
+#story-list .ba-acc-head {
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+}
+
+.story-num {
+  flex: 0 0 auto;
+  min-width: 2.6em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-l);
+  color: var(--accent-strong);
+}
+
+.story-item.is-open .story-num,
+#story-list .ba-acc-item.is-open .story-num {
+  color: var(--ba-yellow-300);
+}
+
+.story-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  min-width: 0;
+}
+
+.story-src {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+/* 故事正文 */
+.story-body,
+#story-list .ba-acc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur) var(--ease-pop);
+}
+
+.story-item.is-open .story-body,
+#story-list .ba-acc-item.is-open .ba-acc-body {
+  grid-template-rows: 1fr;
+}
+
+.story-body > *,
+#story-list .ba-acc-body > * {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.story-text {
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+  font-size: var(--fs-m);
+  line-height: 1.95;
+  color: var(--text-body);
+  white-space: pre-line;
+}
+
+.story-empty {
+  padding: var(--sp-8);
+  text-align: center;
+  border: 2px dashed var(--panel-border);
+  border-radius: var(--r-m);
+  background: var(--ba-white);
+  color: var(--text-body);
+}
+
+/* ==========================================================================
+   8. #voices — 语音
+   ========================================================================== */
+
+.voice-tabs {
+  margin-bottom: var(--sp-5);
+}
+
+.voice-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--sp-3);
+  align-items: start;
+}
+
+/* 当前播放条：fixed 底部居中，蓝底白字 */
+#voice-now,
+.voice-now {
+  position: fixed;
+  left: 50%;
+  bottom: var(--sp-5);
+  translate: -50% 0;
+  z-index: var(--z-voice);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: min(92vw, 660px);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: var(--r-pill);
+  background: var(--accent-grad);
+  color: var(--ba-white);
+  box-shadow: var(--shadow-pop);
+}
+
+.voice-now-label {
+  flex: 0 0 auto;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, .22);
+  border: 1px solid rgba(255, 255, 255, .3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.voice-now-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 700;
+  font-size: var(--fs-m);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.voice-stop {
+  flex: 0 0 auto;
+  padding: var(--sp-2) var(--sp-4);
+  font-size: var(--fs-s);
+}
+
+/* ==========================================================================
+   9. #momotalk — 区块级外框（组件样式见 components.css §13）
+   ========================================================================== */
+
+#mt-app {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   10. #memoria — 记忆局限
+   ========================================================================== */
+
+.memoria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--sp-4);
+}
+
+/* 卡面 art 作背景 cover；JS 可写 --art: url(...) 或直接 background-image */
+.memoria-card {
+  position: relative;
+  aspect-ratio: 300 / 420;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--r-m);
+  overflow: hidden;
+  background-color: var(--ba-navy-800);
+  background-image: var(--art, none);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-panel);
+  transition:
+    transform var(--dur) var(--ease-pop),
+    box-shadow var(--dur) var(--ease-soft),
+    border-color var(--dur) var(--ease-soft);
+}
+
+.memoria-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--ba-yellow-400);
+  box-shadow: var(--shadow-pop);
+}
+
+/* 底部信息条遮罩 */
+.memoria-card::after {
+  content: "";
+  position: absolute;
+  inset: 40% 0 0 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 20, 40, .88) 62%, rgba(10, 20, 40, .96) 100%);
+  pointer-events: none;
+}
+
+.memoria-body {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  display: grid;
+  gap: var(--sp-1);
+  padding: var(--sp-4);
+}
+
+.memoria-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-l);
+  font-weight: 700;
+  color: var(--ba-white);
+  line-height: 1.35;
+}
+
+.memoria-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  color: var(--ba-blue-200);
+}
+
+.memoria-stars {
+  display: flex;
+  gap: 3px;
+  margin-top: var(--sp-1);
+}
+
+.memoria-stars .ba-star {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, .55);
+}
+
+.memoria-stars .ba-star--on {
+  color: var(--ba-yellow-400);
+}
+
+/* 右上角稀有度角标 */
+.memoria-rarity {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-3);
+  z-index: 1;
+  padding: 2px var(--sp-2);
+  border-radius: var(--r-s);
+  background: rgba(10, 20, 40, .72);
+  border: 1px solid rgba(255, 255, 255, .28);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .1em;
+  color: var(--ba-yellow-300);
+}
+
+/* ==========================================================================
+   11. #timeline — 年表（左侧竖线 + 节点圆点）
+   ========================================================================== */
+
+.timeline-list {
+  position: relative;
+  display: grid;
+  gap: var(--sp-5);
+  padding-left: var(--sp-7);
+}
+
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: repeating-linear-gradient(180deg,
+      var(--ba-blue-400) 0 8px, transparent 8px 16px);
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--sp-7) + 1px);
+  top: 10px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--ba-white);
+  border: 3px solid var(--ba-blue-500);
+  box-shadow: 0 0 0 4px rgba(47, 143, 232, .16);
+  transition: background var(--dur-fast) var(--ease-soft), border-color var(--dur-fast) var(--ease-soft);
+}
+
+.timeline-item:hover::before {
+  background: var(--ba-yellow-400);
+  border-color: var(--ba-blue-700);
+}
+
+.timeline-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-s);
+  letter-spacing: .12em;
+  color: var(--accent-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-type {
+  display: inline-flex;
+  margin-bottom: var(--sp-2);
+}
+
+.timeline-body {
+  margin-top: var(--sp-2);
+  padding: var(--sp-4);
+  border: 1px solid var(--panel-border);
+  border-left: 4px solid var(--ba-blue-500);
+  border-radius: var(--r-m);
+  background: var(--ba-white);
+  box-shadow: 0 4px 14px rgba(16, 32, 62, .07);
+  transition: transform var(--dur) var(--ease-pop), box-shadow var(--dur) var(--ease-soft);
+}
+
+.timeline-item:hover .timeline-body {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-panel);
+}
+
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-l);
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.timeline-desc {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-m);
+  line-height: 1.8;
+  color: var(--text-body);
+}
+
+/* type 配色 */
+.timeline-item--release .timeline-body { border-left-color: var(--ba-blue-600); }
+.timeline-item--event .timeline-body { border-left-color: var(--ba-yellow-500); }
+.timeline-item--story .timeline-body { border-left-color: var(--ba-pink-300); }
+.timeline-item--rerun .timeline-body { border-left-color: var(--ba-cyan-400); }
+
+/* ==========================================================================
+   12. #quiz — 趣味检定
+   ========================================================================== */
+
+.quiz-panel {
+  display: grid;
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+}
+
+/* 细进度条：直接子元素即填充（宽度走 --pct 或 JS 内联） */
+.quiz-progress {
+  position: relative;
+  height: 8px;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--r-pill);
+  background: var(--bg-tint-2);
+  overflow: hidden;
+}
+
+.quiz-progress > * {
+  height: 100%;
+  width: var(--pct, 0%);
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--ba-blue-600), var(--ba-cyan-400) 60%, var(--ba-yellow-400));
+  box-shadow: var(--shadow-hi-soft);
+  transition: width var(--dur) var(--ease-pop);
+}
+
+.quiz-box {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.quiz-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-s);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.quiz-q {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--text-strong);
+}
+
+.quiz-options {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+/* 选项按钮竖排，hover 蓝边 */
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  text-align: left;
+  border: 2px solid var(--panel-border);
+  border-radius: var(--r-m);
+  background: var(--ba-white);
+  font-size: var(--fs-m);
+  font-weight: 700;
+  color: var(--text-strong);
+  transition:
+    border-color var(--dur-fast) var(--ease-soft),
+    background var(--dur-fast) var(--ease-soft),
+    transform var(--dur-fast) var(--ease-pop),
+    box-shadow var(--dur-fast) var(--ease-soft);
+}
+
+.quiz-option::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--ba-blue-300);
+  background: var(--accent-soft);
+  transition: background var(--dur-fast) var(--ease-soft), border-color var(--dur-fast) var(--ease-soft);
+}
+
+.quiz-option:hover {
+  border-color: var(--ba-blue-500);
+  background: var(--accent-soft);
+  transform: translateX(4px);
+}
+
+.quiz-option:hover::before {
+  border-color: var(--ba-blue-600);
+  background: var(--ba-blue-200);
+}
+
+.quiz-option:active {
+  transform: scale(.99);
+}
+
+.quiz-option.is-picked {
+  border-color: var(--ba-blue-600);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 3px rgba(47, 143, 232, .18);
+}
+
+.quiz-option.is-picked::before {
+  border-color: var(--ba-blue-700);
+  background: var(--accent-grad);
+}
+
+.quiz-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+/* 居中结果卡 */
+.quiz-result {
+  display: grid;
+  gap: var(--sp-3);
+  justify-items: center;
+  text-align: center;
+  padding: var(--sp-6);
+  border: 1px solid var(--ba-blue-200);
+  border-radius: var(--r-l);
+  background: var(--accent-grad-soft);
+  animation: ba-pop-in .5s var(--ease-pop) both;
+}
+
+.quiz-result-score {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.quiz-result-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.quiz-result-desc {
+  max-width: 52ch;
+  font-size: var(--fs-m);
+  line-height: 1.9;
+  color: var(--text-body);
+}
+
+/* ==========================================================================
+   13. #footer — 页脚氛围（结构见 layout.css §4）
+   ========================================================================== */
+
+.sec-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--img-hex);
+  background-repeat: repeat;
+  background-size: var(--tile-hex);
+  opacity: .12;
+  pointer-events: none;
+}
+
+.sec-footer .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   14. 响应式（移动优先收尾；390px 绝不允许横向滚动）
+   ========================================================================== */
+
+/* 960px 以下：hero 堆叠 */
+@media (max-width: 960px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    text-align: left;
+  }
+
+  .hero-art-wrap {
+    order: -1;
+  }
+
+  .hero-figure {
+    max-width: min(420px, 78vw);
+  }
+
+  .hero-halo {
+    width: min(88%, 380px);
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  .profile-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .weapon-panel {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: left;
+  }
+
+  .weapon-body {
+    justify-items: start;
+    width: 100%;
+  }
+}
+
+/* 720px 以下：技能详情 / 数值行 / 时间轴收紧 */
+@media (max-width: 720px) {
+  .skill-detail {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+  }
+
+  .skill-icon-wrap {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .stat-row {
+    grid-template-columns: 78px minmax(0, 1fr) 74px;
+    gap: var(--sp-2);
+  }
+
+  .stat-row-label {
+    font-size: var(--fs-xs);
+  }
+
+  .stat-row-val {
+    font-size: var(--fs-s);
+  }
+
+  .stats-controls .ba-slider {
+    flex-basis: 100%;
+  }
+
+  .timeline-list {
+    padding-left: var(--sp-6);
+  }
+
+  .timeline-item::before {
+    left: calc(-1 * var(--sp-6) + 1px);
+  }
+
+  .weapon-art {
+    width: 148px;
+    height: 148px;
+  }
+
+  .weapon-art img {
+    width: 104px;
+    height: 104px;
+  }
+}
+
+/* 520px 以下：单列 + 全宽按钮 */
+@media (max-width: 520px) {
+  .voice-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* 长任务标签允许换行，避免横向溢出 */
+  .mission-tag {
+    white-space: normal;
+    letter-spacing: .12em;
+    text-align: left;
+  }
+
+  .skill-values-table th,
+  .skill-values-table td {
+    padding: var(--sp-2);
+    font-size: var(--fs-s);
+  }
+
+  .hero-cta {
+    width: 100%;
+  }
+
+  .hero-cta .ba-btn {
+    flex: 1 1 auto;
+  }
+
+  .hero-badges {
+    width: 100%;
+  }
+
+  .profile-rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .memoria-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quiz-nav {
+    justify-content: stretch;
+  }
+
+  .quiz-nav .ba-btn {
+    flex: 1 1 auto;
+  }
+
+  .voice-now {
+    width: calc(100% - var(--sp-4) * 2);
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-3);
+  }
+
+  .voice-now-label {
+    display: none;
+  }
+}
+
+/* 390px 以下：极限收紧 */
+@media (max-width: 390px) {
+  :root {
+    --container-pad: 12px;
+    --sp-6: 20px;
+    --sp-8: 26px;
+  }
+
+  .ba-panel,
+  .ba-card,
+  .skills-panel,
+  .stats-panel,
+  .weapon-panel,
+  .quiz-panel {
+    padding: var(--sp-4);
+  }
+
+  .ba-btn {
+    padding: var(--sp-3) var(--sp-4);
+    font-size: var(--fs-s);
+  }
+
+  .hero-cta .ba-btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .mt-inputbar {
+    flex-wrap: wrap;
+  }
+
+  .mt-input {
+    flex-basis: 100%;
+  }
+
+  .mt-send {
+    flex: 1 1 auto;
+  }
+}
