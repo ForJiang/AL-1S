@@ -1682,6 +1682,17 @@
       document.addEventListener('visibilitychange', function () {
         if (!document.hidden) forceInView();
       });
+      // 后台标签页中 IO 回调会被挂起：滚动/缩放时也兜底检查视口内元素
+      let scrollTick = 0;
+      let onScroll = function () {
+        if (scrollTick) return;
+        scrollTick = window.requestAnimationFrame(function () {
+          scrollTick = 0;
+          forceInView();
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
     } catch (e) {
       nodes.forEach(function (n) { n.classList.add('is-in'); });
     }
