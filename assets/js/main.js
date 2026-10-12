@@ -1659,6 +1659,15 @@
       nodes.forEach(function (n) { n.classList.add('is-in'); });
       return;
     }
+    // 兜底：IO 回调在后台标签页加载等场景会被挂起，导致视口内元素永不显示。
+    // 只强制「当前在视口内」的元素，不影响下方区块的滚动登场效果。
+    let forceInView = function () {
+      nodes.forEach(function (n) {
+        if (n.classList.contains('is-in')) return;
+        let r = n.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) n.classList.add('is-in');
+      });
+    };
     try {
       let io = new window.IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
@@ -1669,6 +1678,10 @@
         });
       }, { threshold: 0.15 });
       nodes.forEach(function (n) { io.observe(n); });
+      window.setTimeout(forceInView, 2000);
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) forceInView();
+      });
     } catch (e) {
       nodes.forEach(function (n) { n.classList.add('is-in'); });
     }
