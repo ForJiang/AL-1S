@@ -8,6 +8,8 @@
 
 *「肯定。爱丽丝是本机体的识别名。」*
 
+🔗 **在线访问：[https://forjiang.github.io/AL-1S/](https://forjiang.github.io/AL-1S/)** ｜ 仓库：[github.com/ForJiang/AL-1S](https://github.com/ForJiang/AL-1S)
+
 </div>
 
 ---
