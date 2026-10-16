@@ -203,10 +203,8 @@ ul, ol { list-style: none; }
     linear-gradient(180deg, #e8f1ff 0%, var(--bg) 100%);
 }
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 40px;
+  position: relative;
+  z-index: 1;
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 var(--pad);
@@ -214,6 +212,8 @@ ul, ol { list-style: none; }
 .hero-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 12px;
 }
 .hero-kicker {
@@ -239,7 +239,6 @@ ul, ol { list-style: none; }
 }
 .hero-tagline {
   display: inline-block;
-  align-self: flex-start;
   margin-top: 8px;
   padding: 8px 20px;
   border-radius: 999px;
@@ -251,28 +250,17 @@ ul, ol { list-style: none; }
   box-shadow: 0 6px 20px rgba(255,201,60,.3);
 }
 
-.hero-art {
-  position: relative;
-  display: grid;
-  place-items: center;
-}
+/* 光环：居中淡色旋转装饰（非角色立绘） */
 .hero-halo {
   position: absolute;
-  width: min(90%, 400px);
+  top: 50%;
+  left: 50%;
+  translate: -50% -54%;
+  width: min(78%, 560px);
   aspect-ratio: 1;
-  top: 50%; left: 50%;
-  translate: -50% -50%;
-  opacity: .8;
-  animation: spin 26s linear infinite, float 7s ease-in-out infinite;
-  filter: drop-shadow(0 0 24px rgba(84,227,255,.4));
+  opacity: .16;
+  animation: spin 40s linear infinite;
   pointer-events: none;
-}
-.hero-figure {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  animation: float 6s ease-in-out infinite;
-  filter: drop-shadow(0 24px 40px rgba(10,20,40,.4));
 }
 
 .hero-scroll {
@@ -293,15 +281,7 @@ ul, ol { list-style: none; }
 .hero-scroll:hover { background: var(--blue-100); }
 
 @media (max-width: 768px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .hero-text { align-items: center; }
-  .hero-tagline { align-self: center; }
-  .hero-art { order: -1; }
-  .hero-figure { max-width: min(320px, 75vw); }
-  .hero-halo { width: min(85%, 300px); }
+  .hero-halo { width: min(110%, 420px); }
   .hero-scroll { display: none; }
 }
 
@@ -328,23 +308,11 @@ ul, ol { list-style: none; }
 
 /* ─── 5. Profile ─── */
 .profile {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 40px;
-  align-items: start;
   padding: 32px;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-}
-.profile-avatar {
-  width: 200px;
-  flex-shrink: 0;
-}
-.profile-avatar img {
-  width: 100%;
-  filter: drop-shadow(0 12px 24px rgba(10,20,40,.2));
 }
 .profile-info {
   display: flex;
@@ -377,7 +345,7 @@ ul, ol { list-style: none; }
 }
 .profile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 0;
 }
 .profile-row {
@@ -412,11 +380,7 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 768px) {
-  .profile {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .profile-avatar { width: 160px; margin: 0 auto; }
+  .profile { padding: 20px; }
   .profile-header { justify-content: center; }
   .profile-grid { grid-template-columns: 1fr; }
   .profile-row-v { text-align: right; }
