@@ -256,9 +256,9 @@ ul, ol { list-style: none; }
   top: 50%;
   left: 50%;
   translate: -50% -54%;
-  width: min(78%, 560px);
+  width: min(66%, 480px);
   aspect-ratio: 1;
-  opacity: .16;
+  opacity: .32;
   animation: spin 40s linear infinite;
   pointer-events: none;
 }
