@@ -803,25 +803,6 @@ window.AL1S = {
       close: { zh: '关闭', ja: '閉じる', en: 'Close' },
       hint: { zh: '（彩蛋：连点首页 Logo 5 次可再次召唤）', ja: '（隠し要素：トップのロゴを5回連打で再召喚）', en: '(Easter egg: click the hero logo 5 times to summon again)' }
     },
-    footer: {
-      disclaimer: {
-        zh: '本站为非官方粉丝作品，与 Nexon Games、Yostar 及其关联公司无关。《蔚蓝档案》(Blue Archive) 的角色、名称、设定等相关权利归原权利人所有。站内全部插画与图标均为原创 SVG，未使用任何官方素材。',
-        ja: '本サイトは非公式ファン作品であり、Nexon Games、Yostar およびその関連会社とは無関係です。《ブルーアーカイブ》(Blue Archive) のキャラクター・名称・設定などの権利は原権利者に帰属します。サイト内のイラスト・アイコンはすべてオリジナル SVG で、公式素材は使用していません。',
-        en: 'This site is an unofficial fan work and is not affiliated with Nexon Games, Yostar, or their affiliates. Characters, names, and settings from Blue Archive belong to their respective rights holders. All illustrations and icons on this site are original SVG artwork; no official assets are used.'
-      },
-      credit: {
-        zh: '数据来源：SchaleDB 社区数据库 ・ 剧情文本：BlueArchiveDataset ・ 字体：Fredoka / M PLUS Rounded 1c / Share Tech Mono（SIL OFL）',
-        ja: 'データ出典：SchaleDB コミュニティDB ・ シナリオ：BlueArchiveDataset ・ フォント：Fredoka / M PLUS Rounded 1c / Share Tech Mono（SIL OFL）',
-        en: 'Data: SchaleDB community database · Story text: BlueArchiveDataset · Fonts: Fredoka / M PLUS Rounded 1c / Share Tech Mono (SIL OFL)'
-      },
-      fanNote: {
-        zh: 'AL-1S 终端 · 用爱发电 · 清扫开始。',
-        ja: 'AL-1S 端末 · 愛を込めて ・ 掃討、開始します。',
-        en: 'AL-1S Terminal · Made with love · Sanitization initiated.'
-      },
-      backTop: { zh: '回到顶部', ja: 'トップへ', en: 'Back to Top' },
-      tagline: { zh: '天童爱丽丝 · 机能扩充终端', ja: '天童アリス · 機能拡張端末', en: 'Tendou Aris · Extension Terminal' }
-    },
     toast: {
       missionComplete: { zh: '任务完成：招募成功！', ja: 'ミッション完了：募集成功！', en: 'Mission complete: Recruit successful!' }
     }
