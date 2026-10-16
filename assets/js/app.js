@@ -97,12 +97,14 @@
 
   /* ─── Gallery data ─── */
   const GALLERY_ITEMS = [
-    { src: 'assets/img/memoria-1.svg', title: { zh: '废墟的觉醒', ja: '廃墟の覚醒', en: 'Awakening in the Ruins' } },
-    { src: 'assets/img/memoria-2.svg', title: { zh: '光之剑：超新星', ja: '光の剣：スーパーノヴァ', en: 'Supernova' } },
-    { src: 'assets/img/memoria-3.svg', title: { zh: 'AL-1S', ja: 'AL-1S', en: 'AL-1S' } },
-    { src: 'assets/img/memoria-4.svg', title: { zh: '四人小队', ja: '四人パーティ', en: 'Party of Four' } },
-    { src: 'assets/img/memoria-5.svg', title: { zh: '梦想的含义', ja: '夢の意味', en: 'The Meaning of Dreams' } },
-    { src: 'assets/img/memoria-6.svg', title: { zh: '系统就绪', ja: 'システム準備完了', en: 'System Ready' } }
+    'assets/img/gallery/gallery-01.jpg',
+    'assets/img/gallery/gallery-02.jpg',
+    'assets/img/gallery/gallery-03.jpg',
+    'assets/img/gallery/gallery-04.jpg',
+    'assets/img/gallery/gallery-05.jpg',
+    'assets/img/gallery/gallery-06.jpg',
+    'assets/img/gallery/gallery-07.jpg',
+    'assets/img/gallery/gallery-08.jpg'
   ];
 
   /* ─── Voice data (from data.js) ─── */
@@ -174,11 +176,11 @@
   function renderGallery() {
     const grid = $('#galleryGrid');
     if (!grid) return;
-    grid.innerHTML = GALLERY_ITEMS.map(item =>
-      '<div class="gallery-item">' +
-        '<img src="' + item.src + '" alt="' + t(item.title) + '" loading="lazy">' +
-        '<div class="gallery-caption">' + t(item.title) + '</div>' +
-      '</div>'
+    const alt = ui('profile.name');
+    grid.innerHTML = GALLERY_ITEMS.map(src =>
+      '<figure class="gallery-item">' +
+        '<img src="' + src + '" alt="' + alt + '" loading="lazy">' +
+      '</figure>'
     ).join('');
   }
 
