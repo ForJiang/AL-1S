@@ -173,3 +173,40 @@
   .v-item, .voice-item { gap: var(--sp-3); }
   .v-item > .v-wave, .voice-item > .v-wave { display: none; }
 }
+
+/* ═══════════════ 8. 重设计补充：首屏粒子 + 设定区空态 ═══════════════ */
+/* 粒子由 main.js 生成（--x/--y/--d/--s 内联变量），缓慢上浮 + 闪烁 */
+.hero-particle {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: var(--s, 3px);
+  height: var(--s, 3px);
+  border-radius: 50%;
+  background: var(--ba-cyan-400);
+  opacity: 0;
+  box-shadow: 0 0 8px rgba(84, 227, 255, .8);
+  animation: hero-particle-float 9s var(--ease-soft) var(--d, 0s) infinite;
+  pointer-events: none;
+}
+
+@keyframes hero-particle-float {
+  0%   { opacity: 0; transform: translateY(12px) scale(.6); }
+  25%  { opacity: .9; }
+  50%  { opacity: .5; transform: translateY(-10px) scale(1); }
+  75%  { opacity: .8; }
+  100% { opacity: 0; transform: translateY(-26px) scale(.5); }
+}
+
+/* 设定区空态 */
+.worldview-empty {
+  padding: var(--sp-5);
+  text-align: center;
+  color: var(--text-body);
+  border: 1px dashed var(--panel-border);
+  border-radius: var(--r-m);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-particle { animation: none; opacity: .5; }
+}

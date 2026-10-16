@@ -27,6 +27,64 @@ window.AL1S = {
     }
   },
 
+  /* ══════════════ 快讯（官网式信息流；内容取自已验证剧情/活动数据） ══════════════ */
+  news: [
+    { date: 'EP.18', cat: 'story',
+      title: { zh: 'G.BIBLE 全篇攻略：身份校验终端「AL-1S」记录公开', ja: 'G.BIBLE 全篇攻略：身元確認端末「AL-1S」の記録を公開', en: 'G.BIBLE Complete: identity-check terminal "AL-1S" log revealed' },
+      desc: { zh: '游戏开发部的心血之作 G.BIBLE 进入终盘。一台写着「AL-1S」的终端向爱丽丝发起身份校验——她的回答是：「不，我就是我。」', ja: 'ゲーム開発部の力作 G.BIBLE が終盤へ。「AL-1S」と書かれた端末がアリスに身元確認を求める——彼女の答えは「いいえ、私は私」。', en: 'The Game Development Department\'s passion project reaches its finale. A terminal labeled "AL-1S" runs an identity check on Aris — her answer: "No. I am me."' } },
+    { date: 'EP.18', cat: 'event',
+      title: { zh: '千年祭颁奖礼：Tales Saga Chronicle 2 发布 3 小时下载破万', ja: 'ミレニアム授賞式：Tales Saga Chronicle 2 公開3時間でダウンロード1万突破', en: 'Millennium Award Ceremony: Tales Saga Chronicle 2 passes 10,000 downloads in 3 hours' },
+      desc: { zh: '下载 7,705 次、评论 1,372 条——五千条新评论里，有 242 条负面、192 条期待、66 条观望。爱丽丝守在终端前，等大家的第一反应。', ja: 'ダウンロード7,705回、コメント1,372件——新しいコメント500件のうち、否定的242件、期待192件、保留66件。アリスは端末の前で皆の反応を待った。', en: '7,705 downloads and 1,372 comments — of 500 new comments, 242 negative, 192 excited, 66 uncertain. Aris waits at the terminal for everyone\'s first reactions.' } },
+    { date: 'ALT', cat: 'gacha',
+      title: { zh: '换装预告：爱丽丝（女仆）即将登场', ja: '衣装チェンジ予告：アリス（メイド）がまもなく登場', en: 'Alt outfit preview: Aris (Maid) coming soon' },
+      desc: { zh: '因为各种缘故穿上了女仆装的爱丽丝，正在为成为独当一面的「女仆勇者」而每日修行中——本人似乎还不太习惯。', ja: '色々あってメイド服を着ることになったアリスが、一人前の「メイド勇者」を目指して日々修行中——本人はまだあまり慣れていない模様。', en: 'For various reasons Aris ended up in a maid outfit, training daily to become a full-fledged "Maid Hero" — though she still isn\'t quite used to it.' } },
+    { date: 'EP.17', cat: 'story',
+      title: { zh: '转学生加入：爱丽丝报到游戏开发部', ja: '転入生入部：アリスがゲーム開発部へ', en: 'Transfer student joins: Aris reports to the Game Development Department' },
+      desc: { zh: '错过注册、还没开始上课的她，凭着「听说可以参加社团」加入游戏开发部。自称定位：坦克，兼光型近战输出。', ja: '登録を逃し授業も始まっていない彼女が、「部活に入れると聞いたので」ゲーム開発部に入部。自称の役割はタンク兼光型近接ダメージ。', en: 'Having missed registration and not yet started classes, she joined the Game Development Department because "I was told I could join a club". Self-declared role: tank and light-type melee damage.' } },
+    { date: 'EP.17', cat: 'event',
+      title: { zh: '装备确认：光之剑：超新星 入手', ja: '装備確認：光の剣：スーパーノヴァ 入手', en: 'Equipment confirmed: Supernova — The Sword of Light acquired' },
+      desc: { zh: '「等级不够？那需要什么数值？」——她把比人还大的电磁炮扛上了肩，并按下了开始按钮。', ja: '「レベル不足？では必要なステータスは？」——彼女は人間より大きなレールガンを肩に担ぎ、スタートボタンを押した。', en: '"My level is too low? What stats do I need?" — she hoisted a railgun bigger than herself onto her shoulder and pressed start.' } },
+    { date: 'ORIGIN', cat: 'story',
+      title: { zh: '目击报告：废墟中醒来的「单位：爱丽丝」', ja: '目撃情報：廃墟で目覚めた「ユニット：アリス」', en: 'Sighting: "Unit: Aris" awakens in the ruins' },
+      desc: { zh: '千年某处废墟中发现一名来历不明的少女。年龄与出身全部不明，语言由复古游戏台词构成——「单位识别：爱丽丝。」', ja: 'ミレニアムの廃墟で正体不明の少女を発見。年齢も出身もすべて不明、言葉はレトロゲームのセリフで構成——「ユニット識別：アリス」。', en: 'A mysterious girl found in the Millennium ruins. Age and origins unknown; her speech is built from retro game quotes — "Unit designation: Aris."' } },
+    { date: 'EP.18', cat: 'story',
+      title: { zh: '四人小队达成：27 座地下城 · 139 次成功讨伐', ja: '四人パーティ達成：ダンジョン27箇所・レイド139回成功', en: 'Party of four: 27 dungeons, 139 successful raids' },
+      desc: { zh: '桃、绿、柚子，还有爱丽丝。「只要在一起，就没有我们做不到的事。」', ja: 'モモイ、ミドリ、ユズ、そしてアリス。「一緒にいれば、私たちにできないことはない。」', en: 'Momoi, Midori, Yuzu, and Aris. "If we are together, there is nothing we cannot do."' } },
+    { date: 'FAN', cat: 'event',
+      title: { zh: 'AL-1S 机能扩充终端 · 粉丝站点上线', ja: 'AL-1S 機能拡張端末・ファンサイト公開', en: 'AL-1S Extension Terminal · fan site now live' },
+      desc: { zh: '以官方剧情中的「AL-1S」身份校验为灵感打造的粉丝终端上线：档案、数值、剧情、语音、MomoTalk 模拟与图集。非官方作品。', ja: '公式シナリオの「AL-1S」身元確認から着想したファン端末が公開：プロフィール、ステータス、ストーリー、ボイス、MomoTalk シミュレーターとギャラリー。非公式作品。', en: 'A fan terminal inspired by the official "AL-1S" identity check goes live: profile, stats, story, voices, MomoTalk sim and gallery. Unofficial.' } },
+    { date: 'EP.18', cat: 'gacha',
+      title: { zh: '限定招募：「老师加入了队伍！」', ja: '限定募集：「先生がパーティに参加！」', en: 'Limited recruit: "Sensei has joined the party!"' },
+      desc: { zh: '噗噗噗噗！老师加入了队伍。参加成功，任务目标完成——「无论发生什么，我都会保护老师。」', ja: 'ポポポポン！先生がパーティに参加。参加成功、クエスト目標完了——「何が起きても、先生を守る」。', en: 'Bum bum bum! Sensei has joined the party. Entry successful, objective complete — "I will protect Sensei no matter what happens."' } },
+    { date: 'ALT', cat: 'event',
+      title: { zh: '日常：女仆勇者修行 · 第 27 日', ja: '日常：メイド勇者修行・27日目', en: 'Daily: Maid Hero training, day 27' },
+      desc: { zh: '「请把穿女仆装的我保持在距离之外。」——战斗结束后的她这样请求。修行还在继续。', ja: '「メイド服を着た私は、しばらく距離を置いてください。」——戦闘後、彼女はそうお願いした。修行は続く。', en: '"Please keep anything wearing a maid outfit away from me." — she requests after battle. The training continues.' } }
+  ],
+
+  /* ══════════════ 设定 · 奇普托斯（世界观，据维基百科条目整理） ══════════════ */
+  worldview: {
+    intro: {
+      zh: '《蔚蓝档案》的舞台是虚构学园都市<em>「奇普托斯」</em>（Kivotos）。数千所不同学风的学校在此林立，大部分学校拥有自己的<em>自治区</em>并握有全权；各校则由类似联邦政府的<em>「联邦学生会」</em>在尊重自治的前提下统御，管理中枢<em>「圣所之塔」</em>矗立在直辖区。<br><br>在这里上学的学生头顶，都漂浮着名为<em>「光环」</em>的发光体——它没有质量、无法触摸，却可以被破坏，并在睡眠、失去意识或死亡时消失。故事开始前不久，<em>联邦学生会长突然失踪</em>，学生会陷入瘫痪，潜伏的问题浮出水面。为此，联邦学生会向拥有超法规权限的跨校社团<em>「夏莱」（S.C.H.A.L.E）</em>求助——玩家扮演的，正是会长失踪前亲自从奇普托斯外聘请来的教员<em>「老师」</em>。',
+      ja: '『ブルーアーカイブ』の舞台は、架空の学園都市<em>「キヴォトス」</em>（Kivotos）。数千の様々な学風の学校が立ち並び、多くの学校は<em>自治区</em>を保有して全権を握る。各校は連邦政府に似た<em>「連邦生徒会」</em>が自治を尊重しつつ統御し、管理中枢<em>「聖所の塔」</em>が直轄区にそびえる。<br><br>この街で学ぶ生徒たちの頭には、<em>「光环」</em>と呼ばれる発光体が浮かんでいる——質量がなく触れることはできないが破壊は可能で、睡眠・意識喪失・死亡時に消える。物語の始まり少し前、<em>連邦生徒会長が突然失踪</em>し生徒会は機能停止に陥る。連邦生徒会は超法規的権限を持つクロススクール組織<em>「シャーレ」（S.C.H.A.L.E）</em>に助力を要請した——プレイヤーは、会長失踪前にキヴォトス外から招かれた教員<em>「先生」</em>である。',
+      en: 'Blue Archive is set in the fictional academy city of <em>Kivotos</em>. Thousands of schools of differing character stand here; most hold their own <em>autonomous districts</em> with full authority, unified under a federal government-like body — the <em>Federal Student Council</em> — with the administrative center, the <em>Sanctum Tower</em>, rising over its direct district.<br><br>Every student here floats a glowing <em>halo</em> above their head — massless and untouchable, yet breakable, vanishing in sleep, unconsciousness, or death. Shortly before the story begins, the <em>Federal Student Council president suddenly disappears</em>, paralyzing the council and surfacing long-suppressed problems. The council turns to <em>SCHALE</em> (S.C.H.A.L.E), a cross-school organization with extra-legal authority — and the player takes the role of the <em>Sensei</em>, a teacher personally invited from outside Kivotos just before the president vanished.'
+    },
+    facts: [
+      { value: '数千', label: { zh: '所不同学风的学园', ja: 'もの学校が林立', en: 'schools of every character' } },
+      { value: '光环', label: { zh: '头顶的发光体（可破坏）', ja: '頭上の発光体（破壊可能）', en: 'the halo above them (breakable)' } },
+      { value: '夏莱', label: { zh: 'S.C.H.A.L.E · 老师的归属', ja: 'S.C.H.A.L.E · 先生の所属', en: 'S.C.H.A.L.E · where Sensei belongs' } },
+      { value: '2021', label: { zh: '日服首发年份', ja: '日服サービス開始', en: 'JP service began' } }
+    ],
+    schools: [
+      { id: 'millennium', name: { zh: '千禧年', ja: 'ミレニアム', en: 'Millennium' }, note: { zh: '爱丽丝的学园', ja: 'アリスの学園', en: "Aris's school" }, current: true },
+      { id: 'trinity', name: { zh: '三一', ja: 'トリニティ', en: 'Trinity' }, note: { zh: '综合学园', ja: '総合学園', en: 'General academy' } },
+      { id: 'gehenna', name: { zh: '格黑娜', ja: 'ゲヘナ', en: 'Gehenna' }, note: { zh: '问题学生的巢穴', ja: '問題生の巣窟', en: 'Home of troublemakers' } },
+      { id: 'abydos', name: { zh: '阿拜多斯', ja: 'アビドス', en: 'Abydos' }, note: { zh: '面临废校', ja: '廃校の危機', en: 'Facing closure' } },
+      { id: 'redwinter', name: { zh: '赤冬', ja: 'レッドウィンター', en: 'Red Winter' }, note: { zh: '赤冬联邦', ja: 'レッドウィンター連邦', en: 'Red Winter Federation' } },
+      { id: 'valkyrie', name: { zh: '瓦尔基里', ja: 'ヴァルキューレ', en: 'Valkyrie' }, note: { zh: '警察学园', ja: '警察学園', en: 'Police academy' } },
+      { id: 'arius', name: { zh: '阿里乌斯', ja: 'アリウス', en: 'Arius' }, note: { zh: '分校', ja: '分校', en: 'Branch school' } }
+    ]
+  },
+
   /* ══════════════ 角色档案（SchaleDB 三服数据） ══════════════ */
   profile: {
     name: { zh: '天童爱丽丝', ja: '天童アリス', en: 'Tendou Aris' },
@@ -529,6 +587,9 @@ window.AL1S = {
   /* ══════════════ 全站界面文案 ══════════════ */
   ui: {
     nav: {
+      home: { zh: '首页', ja: 'ホーム', en: 'Home' },
+      news: { zh: '快讯', ja: 'ニュース', en: 'News' },
+      worldview: { zh: '设定', ja: '設定', en: 'World' },
       profile: { zh: '档案', ja: 'プロフィール', en: 'Profile' },
       stats: { zh: '数值', ja: 'ステータス', en: 'Stats' },
       skills: { zh: '技能', ja: 'スキル', en: 'Skills' },
@@ -539,6 +600,34 @@ window.AL1S = {
       timeline: { zh: '登场记录', ja: '登場記録', en: 'Timeline' },
       quiz: { zh: '机器人检定', ja: 'ロボット検定', en: 'Robot Test' },
       lang: { zh: '语言', ja: '言語', en: 'Language' }
+    },
+    news: {
+      kicker: { zh: 'NEWS · 快讯', ja: 'NEWS · ニュース', en: 'NEWS · FEED' },
+      title: { zh: '快讯', ja: 'ニュース', en: 'News' },
+      sub: {
+        zh: '来自奇普托斯与千禧年的最新通报：剧情进展、活动预告与限定招募（内容整理自官方剧情文本）。',
+        ja: 'キヴォトスとミレニアムからの最新報：ストーリー展開、イベント予告、限定募集（公式シナリオテキストより整理）。',
+        en: 'Latest dispatches from Kivotos and Millennium: story progress, event previews and limited recruits (compiled from official story text).'
+      },
+      all: { zh: '全部', ja: 'すべて', en: 'ALL' },
+      catNames: {
+        story: { zh: '剧情', ja: 'ストーリー', en: 'Story' },
+        event: { zh: '活动', ja: 'イベント', en: 'Event' },
+        gacha: { zh: '招募', ja: '募集', en: 'Recruit' }
+      },
+      more: { zh: '更多新闻 >>', ja: 'もっと見る >>', en: 'More news >>' },
+      empty: { zh: '暂无快讯。', ja: 'ニュースはありません。', en: 'No news available.' }
+    },
+    worldview: {
+      kicker: { zh: 'WORLDVIEW · 设定', ja: 'WORLDVIEW · 設定', en: 'WORLDVIEW · LORE' },
+      title: { zh: '奇普托斯', ja: 'キヴォトス', en: 'Kivotos' },
+      sub: {
+        zh: '《蔚蓝档案》的舞台——由数千所学园与自治区构成的学园都市「奇普托斯」，以及头顶光环的少女们。',
+        ja: '『ブルーアーカイブ』の舞台——数千の学園と自治区が集う学園都市「キヴォトス」と、光环を浮かべた少女たち。',
+        en: 'The stage of Blue Archive — the academy city of Kivotos, built from thousands of schools and autonomous districts, and the girls with halos.'
+      },
+      schoolsTitle: { zh: '主要学园', ja: '主な学園', en: 'Major Schools' },
+      currentTag: { zh: '当前所属', ja: '現在所属', en: 'Current' }
     },
     boot: {
       title: { zh: 'AL-1S 系统启动中', ja: 'AL-1S システム起動中', en: 'AL-1S System Booting' },
@@ -555,7 +644,7 @@ window.AL1S = {
     hero: {
       kicker: { zh: 'MILLENNIUM · GAME DEVELOPMENT DEPT.', ja: 'MILLENNIUM · ゲーム開発部', en: 'MILLENNIUM · GAME DEVELOPMENT DEPT.' },
       title: { zh: '天童爱丽丝', ja: '天童アリス', en: 'Tendou Aris' },
-      sub: { zh: '天童アリス · TENDŌ ARIS · 千禧年游戏开发部', ja: '天童アリス · ミレニアム ゲーム開発部', en: 'Tendou Aris · Millennium · Game Dev' },
+      sub: { zh: 'TENDŌ ARIS', ja: 'TENDŌ ARIS', en: 'TENDŌ ARIS' },
       tagline: { zh: '「肯定。爱丽丝是本机体的识别名。」', ja: '「肯定。アリスは本ユニットの識別名である。」', en: '"Affirmative, Aris is the designated name of this unit."' },
       ctaProfile: { zh: '查看角色档案', ja: 'プロフィールを見る', en: 'View Profile' },
       ctaMomotalk: { zh: '打开 MomoTalk', ja: 'MomoTalk を開く', en: 'Open MomoTalk' },

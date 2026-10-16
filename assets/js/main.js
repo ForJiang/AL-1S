@@ -301,7 +301,7 @@
   /* ═══════════════════════════════════════════════════════════
    * 3. nav —— scrollspy / 汉堡菜单 / 阅读进度
    * ═══════════════════════════════════════════════════════════ */
-  const NAV_IDS = ['profile', 'stats', 'skills', 'stories', 'voices', 'momotalk', 'memoria', 'timeline', 'quiz'];
+  const NAV_IDS = ['news', 'worldview', 'profile', 'stats', 'skills', 'stories', 'voices', 'momotalk', 'memoria', 'timeline', 'quiz'];
   let navRaf = 0;
 
   function updateNav() {
@@ -315,8 +315,12 @@
     setVar(navBar, '--pct', pct.toFixed(2) + '%');
     setVar(navBar, '--w', pct.toFixed(2) + '%');
 
+    // 官网式浮动导航：滚过 hero 后加 is-scrolled（毛玻璃实底）
+    const nav = qs('#site-nav');
+    if (nav) nav.classList.toggle('is-scrolled', y > 40);
+
     let line = vh * 0.4;
-    let current = '';
+    let current = y < vh * 0.6 ? 'hero' : '';
     for (let i = 0; i < NAV_IDS.length; i++) {
       let s = document.getElementById(NAV_IDS[i]);
       if (!s) continue;
@@ -1226,6 +1230,158 @@
   /* ═══════════════════════════════════════════════════════════
    * 10. memoria —— 记忆局限卡片
    * ═══════════════════════════════════════════════════════════ */
+  /* ═══════════════════════════════════════════════════════════
+   * 9.5 news —— 官网式快讯流（页签过滤 + 行内跳转）
+   * ═══════════════════════════════════════════════════════════ */
+  const NEWS_CATS = ['story', 'event', 'gacha'];
+  const NEWS_CAT_KEY = {
+    story: 'ui.news.catNames.story',
+    event: 'ui.news.catNames.event',
+    gacha: 'ui.news.catNames.gacha'
+  };
+  // 快讯分类 → 站内目标区块（官网风：点击新闻跳到详情）
+  const NEWS_TARGET = { story: '#stories', event: '#timeline', gacha: '#memoria' };
+
+  function newsList() {
+    let arr = data().news;
+    return Array.isArray(arr) ? arr.filter(function (n) { return n && typeof n === 'object'; }) : [];
+  }
+
+  function renderNews() {
+    let d = data();
+    let tabs = qs('#news-tabs');
+    let listBox = qs('#news-list');
+    let all = newsList();
+
+    let cats = ['all'];
+    NEWS_CATS.forEach(function (c) {
+      for (let i = 0; i < all.length; i++) { if (all[i].cat === c) { cats.push(c); break; } }
+    });
+    if (state.newsCat === undefined || cats.indexOf(state.newsCat) === -1) state.newsCat = 'all';
+
+    if (tabs) {
+      tabs.textContent = '';
+      cats.forEach(function (c) {
+        let label = c === 'all'
+          ? (T(getPath(d, 'ui.news.all')) || 'ALL')
+          : (T(getPath(d, NEWS_CAT_KEY[c])) || c.toUpperCase());
+        let b = ce('button', 'ba-tab', label);
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('data-newscat', c);
+        if (c === state.newsCat) b.classList.add('is-active');
+        tabs.appendChild(b);
+      });
+    }
+
+    let empty = qs('#news-empty');
+    let shown = all.filter(function (n) { return state.newsCat === 'all' || n.cat === state.newsCat; });
+    if (empty) empty.hidden = shown.length > 0;
+    if (!listBox) return;
+    listBox.textContent = '';
+    shown.forEach(function (n) {
+      let item = ce('button', 'news-item');
+      item.type = 'button';
+      let target = NEWS_TARGET[n.cat];
+      if (target) item.setAttribute('data-news-target', target);
+      let desc = T(n.desc);
+      if (desc) item.title = desc; // 悬浮显示摘要
+      item.appendChild(ce('span', 'news-date', n.date ? String(n.date) : '—'));
+      let cat = NEWS_CATS.indexOf(n.cat) !== -1 ? String(n.cat) : 'event';
+      item.appendChild(ce('span', 'news-cat news-cat--' + cat, T(getPath(d, NEWS_CATS.indexOf(n.cat) !== -1 ? NEWS_CAT_KEY[cat] : 'ui.news.catNames.event')) || cat.toUpperCase()));
+      item.appendChild(ce('span', 'news-title', T(n.title) || '—'));
+      item.appendChild(ce('span', 'news-arrow', '→'));
+      listBox.appendChild(item);
+    });
+  }
+
+  function bindNews() {
+    let tabs = qs('#news-tabs');
+    if (tabs) {
+      tabs.addEventListener('click', function (e) {
+        let btn = e.target && e.target.closest ? e.target.closest('[data-newscat]') : null;
+        if (!btn || !tabs.contains(btn)) return;
+        let c = btn.getAttribute('data-newscat');
+        if (!c || c === state.newsCat) return;
+        state.newsCat = c;
+        renderNews();
+      });
+    }
+    let listBox = qs('#news-list');
+    if (listBox) {
+      listBox.addEventListener('click', function (e) {
+        let btn = e.target && e.target.closest ? e.target.closest('[data-news-target]') : null;
+        if (!btn || !listBox.contains(btn)) return;
+        let sel = btn.getAttribute('data-news-target');
+        let el = sel ? qs(sel) : null;
+        if (el) el.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
+      });
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+   * 9.6 worldview —— 基沃托斯设定（事实网格 + 学园卡片）
+   * ═══════════════════════════════════════════════════════════ */
+  function renderWorldview() {
+    let d = data();
+    let w = d.worldview || {};
+
+    let facts = qs('#worldview-facts');
+    if (facts) {
+      facts.textContent = '';
+      let list = Array.isArray(w.facts) ? w.facts.filter(function (f) { return f && typeof f === 'object'; }) : [];
+      if (!list.length) {
+        facts.appendChild(ce('p', 'worldview-empty', '—'));
+      } else {
+        list.forEach(function (f) {
+          let card = ce('div', 'worldview-fact');
+          card.appendChild(ce('strong', 'worldview-fact-value', T(f.value) || '—'));
+          card.appendChild(ce('span', 'worldview-fact-label', T(f.label)));
+          facts.appendChild(card);
+        });
+      }
+    }
+
+    let schools = qs('#worldview-schools');
+    if (schools) {
+      schools.textContent = '';
+      let list = Array.isArray(w.schools) ? w.schools.filter(function (x) { return x && typeof x === 'object'; }) : [];
+      if (!list.length) {
+        schools.appendChild(ce('p', 'worldview-empty', '—'));
+      } else {
+        list.forEach(function (x) {
+          let card = ce('div', 'worldview-school' + (x.current ? ' is-current' : ''));
+          card.appendChild(ce('strong', 'worldview-school-name', T(x.name) || '—'));
+          let enName = (x.name && typeof x.name === 'object' && x.name.en) ? String(x.name.en) : '';
+          card.appendChild(ce('span', 'worldview-school-en', enName));
+          card.appendChild(ce('span', 'worldview-school-note', T(x.note)));
+          if (x.current) {
+            card.appendChild(ce('span', 'worldview-school-cur', T(getPath(d, 'ui.worldview.currentTag')) || ''));
+          }
+          schools.appendChild(card);
+        });
+      }
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+   * 9.7 hero 粒子 —— 首屏氛围（JS 生成，CSS 动画）
+   * ═══════════════════════════════════════════════════════════ */
+  function initHeroParticles() {
+    let box = qs('#hero-particles');
+    if (!box || reduced()) return;
+    if (box.childElementCount) return; // 语言切换重复渲染保护
+    let n = window.innerWidth < 720 ? 14 : 26;
+    for (let i = 0; i < n; i++) {
+      let p = ce('span', 'hero-particle');
+      setVar(p, '--x', (Math.random() * 100).toFixed(2) + '%');
+      setVar(p, '--y', (Math.random() * 100).toFixed(2) + '%');
+      setVar(p, '--d', (Math.random() * 8).toFixed(2) + 's');
+      setVar(p, '--s', (2 + Math.random() * 3).toFixed(1) + 'px');
+      box.appendChild(p);
+    }
+  }
+
   function renderMemoria() {
     let d = data();
     let grid = qs('#memoria-grid');
@@ -1703,6 +1859,8 @@
    * ═══════════════════════════════════════════════════════════ */
   function renderAll() {
     let jobs = [
+      ['news', renderNews],
+      ['worldview', renderWorldview],
       ['profile', renderProfile],
       ['stats', renderStats],
       ['skills', renderSkills],
@@ -1775,6 +1933,7 @@
   function bindAll() {
     bindLangButtons();
     bindNav();
+    bindNews();
     bindStats();
     bindSkills();
     bindWeapon();
@@ -1792,6 +1951,7 @@
       bindAll();
       applyLang(state.lang);
       initReveal();
+      initHeroParticles();
       runBoot();
     } catch (e) {
       // 关键路径兜底：异常也绝不把页面锁在遮罩里

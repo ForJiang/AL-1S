@@ -192,7 +192,7 @@
   margin-inline: auto;
   padding-inline: var(--container-pad);
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  grid-template-columns: minmax(0, 1.14fr) minmax(0, .86fr);
   align-items: center;
   gap: var(--sp-8);
 }
