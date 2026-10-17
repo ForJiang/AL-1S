@@ -1,115 +1,271 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AL-1S | 天童アリス — Blue Archive</title>
-  <meta name="description" content="AL-1S · 蔚蓝档案天童爱丽丝主题粉丝站">
-  <meta property="og:title" content="AL-1S | 天童アリス">
-  <meta property="og:description" content="Millennium · Game Development Department">
-  <meta property="og:image" content="assets/img/halo-alice.svg">
-  <link rel="icon" href="assets/img/halo-alice.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=M+PLUS+Rounded+1c:wght@400;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天童アリス - Tendou Aris</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #3b82f6;
+            --light-blue: #60a5fa;
+            --dark-blue: #1e40af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .character-name {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .character-title {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            padding: 0.5rem 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -6px rgb(0 0 0 / 0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-right: 0.5rem;
+        }
+
+        .highlight-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .highlight-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .character-name {
+                font-size: 2rem;
+            }
+
+            .character-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Nav -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a class="nav-logo" href="#">
-        <img src="assets/img/halo-alice.svg" alt="" width="28" height="28">
-        <span>AL-1S</span>
-      </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#profile" data-i18n="nav.profile">档案</a>
-        <a href="#story" data-i18n="nav.story">故事</a>
-        <a href="#gallery" data-i18n="nav.gallery">相册</a>
-        <a href="#voices" data-i18n="nav.voices">语音</a>
-      </div>
-      <div class="nav-actions">
-        <button class="nav-btn" id="langBtn" type="button" aria-label="切换语言">中</button>
-        <button class="nav-btn nav-menu" id="menuBtn" type="button" aria-label="菜单">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <img class="hero-halo" src="assets/img/halo-alice.svg" alt="" aria-hidden="true">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-kicker">MILLENNIUM · GAME DEVELOPMENT DEPT.</p>
-        <h1 class="hero-title" data-i18n="profile.name">天童爱丽丝</h1>
-        <p class="hero-sub">TENDŌ ARIS</p>
-        <p class="hero-tagline" data-i18n="hero.tagline">「肯定。爱丽丝是本机体的识别名。」</p>
-      </div>
-    </div>
-    <a class="hero-scroll" href="#profile">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-    </a>
-  </section>
-
-  <!-- Profile -->
-  <section class="section" id="profile">
     <div class="container">
-      <h2 class="sec-title reveal" data-i18n="sec.profile">学生档案</h2>
-      <div class="profile reveal">
-        <div class="profile-info">
-          <div class="profile-header">
-            <h3 class="profile-name" data-i18n="profile.name">天童爱丽丝</h3>
-            <span class="profile-stars">★★★</span>
-          </div>
-          <p class="profile-reading">テンドウ アリス · Tendou Aris</p>
-          <div class="profile-grid" id="profileGrid"></div>
-          <blockquote class="profile-quote" data-i18n="profile.intro">
-            单位识别：爱丽丝。系统状态……正常。确认。请求：与老师同行。
-          </blockquote>
+        <header>
+            <h1 class="character-name">天童アリス</h1>
+            <p class="character-subtitle">Tendou Aris</p>
+            <span class="character-title">游戏开发部 · AL-1S</span>
+        </header>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="card-icon">✦</span>
+                    基本信息
+                </h2>
+                <ul class="info-list">
+                    <li><span class="info-label">姓名：</span>天童アリス（Tendou Aris）</li>
+                    <li><span class="info-label">学校：</span>千年科学学园</li>
+                    <li><span class="info-label">社团：</span>游戏开发部</li>
+                    <li><span class="info-label">年龄：</span>16岁</li>
+                    <li><span class="info-label">生日：</span>3月25日</li>
+                    <li><span class="info-label">身高：</span>159cm</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="card-icon">⚡</span>
+                    角色特点
+                </h2>
+                <div class="card-content">
+                    <p>爱丽丝是千年科学学园游戏开发部的核心成员，自称"AL-1S"。她拥有出色的游戏开发和编程能力，对游戏充满热情。</p>
+                    <br>
+                    <p>性格认真负责，虽然有时会显得有些固执，但对朋友十分忠诚。在游戏开发方面展现出超凡的天赋和创造力。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="card-icon">♦</span>
+                    战斗定位
+                </h2>
+                <ul class="info-list">
+                    <li><span class="info-label">职业：</span>Striker</li>
+                    <li><span class="info-label">武器：</span>AR</li>
+                    <li><span class="info-label">攻击类型：</span>爆发</li>
+                    <li><span class="info-label">防御类型：</span>轻装甲</li>
+                    <li><span class="info-label">角色定位：</span>输出/支援</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="card-icon">★</span>
+                    个人爱好
+                </h2>
+                <div class="card-content">
+                    <p><strong>游戏开发：</strong>热衷于创作和开发各类游戏，特别是RPG类型。</p>
+                    <br>
+                    <p><strong>编程技术：</strong>精通多种编程语言，对新技术充满好奇心。</p>
+                    <br>
+                    <p><strong>团队协作：</strong>与游戏开发部的伙伴们一起实现梦想中的游戏项目。</p>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="highlight-section">
+            <h2 class="highlight-title">「用代码创造无限可能」</h2>
+            <p class="highlight-text">
+                作为游戏开发部的核心成员，爱丽丝始终坚信技术能够创造美好的未来。
+                她用自己的编程技能和创造力，为基沃托斯的学生们带来欢乐和惊喜。
+                在她的世界里，每一行代码都承载着梦想，每一个游戏都是一段独特的冒险。
+            </p>
+        </div>
     </div>
-  </section>
 
-  <!-- Story -->
-  <section class="section section--alt" id="story">
-    <div class="container">
-      <h2 class="sec-title reveal" data-i18n="sec.story">关于爱丽丝</h2>
-      <div class="story reveal">
-        <div class="story-body" id="storyBody"></div>
-        <blockquote class="story-highlight" data-i18n="story.highlight">
-          「先生，我最喜欢游戏了！和大家在一起的时候，感觉整个世界都在闪闪发光。」
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section class="section" id="gallery">
-    <div class="container">
-      <h2 class="sec-title reveal" data-i18n="sec.gallery">相册</h2>
-      <div class="gallery reveal" id="galleryGrid"></div>
-    </div>
-  </section>
-
-  <!-- Voices -->
-  <section class="section section--alt" id="voices">
-    <div class="container">
-      <h2 class="sec-title reveal" data-i18n="sec.voices">语音台词</h2>
-      <p class="sec-sub reveal" data-i18n="sec.voicesSub">台词取自官方剧情文本。点击条目朗读日文。</p>
-      <div class="voice-tabs reveal" id="voiceTabs"></div>
-      <div class="voice-list reveal" id="voiceList"></div>
-    </div>
-  </section>
-
-  <button class="btn-top" id="btnTop" aria-label="回到顶部">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
-
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js"></script>
+    <footer>
+        <p>© 2026 Blue Archive Fan Site | 天童アリス (Tendou Aris)</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">本站为粉丝网站，所有角色版权归 NEXON Games 所有</p>
+    </footer>
 </body>
 </html>
