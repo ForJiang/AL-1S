@@ -73,6 +73,130 @@
             margin-top: 1rem;
         }
 
+        /* 角色展示区域 */
+        .hero-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image::before {
+            content: '🎮';
+            font-size: 4rem;
+            position: absolute;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        /* 图片画廊 */
+        .gallery-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px -6px rgb(0 0 0 / 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item::before {
+            content: '📸';
+            font-size: 3rem;
+            position: absolute;
+        }
+
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -169,6 +293,22 @@
             margin-top: 3rem;
         }
 
+        .image-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        @media (max-width: 968px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .character-name {
                 font-size: 2rem;
@@ -185,6 +325,14 @@
             header {
                 padding: 2rem 1rem;
             }
+
+            .hero-section {
+                padding: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
         }
     </style>
 </head>
@@ -195,6 +343,50 @@
             <p class="character-subtitle">Tendou Aris</p>
             <span class="character-title">游戏开发部 · AL-1S</span>
         </header>
+
+        <!-- 角色展示区域 -->
+        <section class="hero-section">
+            <div class="hero-image">
+                <img src="images/aris-main.jpg" alt="天童アリス" onerror="this.style.display='none'">
+                <div class="image-placeholder" style="display: none;">
+                    <div style="font-size: 4rem; margin-bottom: 0.5rem;">🎮</div>
+                    <div>角色立绘</div>
+                </div>
+            </div>
+            <div class="hero-content">
+                <h2 class="hero-title">游戏开发部的编程天才</h2>
+                <p class="hero-description">
+                    天童アリス是千年科学学园游戏开发部的核心成员，自称"AL-1S"。
+                    她拥有出色的游戏开发和编程能力，对游戏充满热情。
+                    性格认真负责，虽然有时会显得有些固执，但对朋友十分忠诚。
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">千年科学学园</span>
+                    <span class="tag">游戏开发部</span>
+                    <span class="tag">编程专家</span>
+                    <span class="tag">Striker</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 图片画廊 -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">角色画廊</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/aris-1.jpg" alt="爱丽丝 1" onerror="this.style.display='none'">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/aris-2.jpg" alt="爱丽丝 2" onerror="this.style.display='none'">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/aris-3.jpg" alt="爱丽丝 3" onerror="this.style.display='none'">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/aris-4.jpg" alt="爱丽丝 4" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </section>
 
         <div class="content-grid">
             <div class="card">
@@ -267,5 +459,16 @@
         <p>© 2026 Blue Archive Fan Site | 天童アリス (Tendou Aris)</p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">本站为粉丝网站，所有角色版权归 NEXON Games 所有</p>
     </footer>
+
+    <script>
+        // 显示图片加载失败时的占位符
+        document.querySelectorAll('.hero-image img').forEach(img => {
+            img.onerror = function() {
+                this.style.display = 'none';
+                const placeholder = this.nextElementSibling;
+                if (placeholder) placeholder.style.display = 'block';
+            };
+        });
+    </script>
 </body>
 </html>
