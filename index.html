@@ -12,112 +12,115 @@
         }
 
         :root {
-            --primary-blue: #3b82f6;
-            --light-blue: #60a5fa;
-            --dark-blue: #1e40af;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #3b82f6;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --bg-light: #f5f5f5;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+            background: var(--secondary-color);
             color: var(--text-primary);
             line-height: 1.6;
-            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
-        #waves-background {
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        #waves-background canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            text-align: center;
-            padding: 4rem 2rem;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 24px;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .character-name {
-            font-size: 3rem;
+        .logo {
+            font-size: 1.2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .character-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .character-title {
-            font-size: 1.1rem;
+            letter-spacing: -0.5px;
             color: var(--text-primary);
-            padding: 0.5rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 50px;
-            display: inline-block;
-            margin-top: 1rem;
+            text-decoration: none;
         }
 
-        /* 角色展示区域 */
-        .hero-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 6rem;
             align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-text .subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-text .role {
+            font-size: 1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero-image {
             width: 100%;
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
+            height: 700px;
+            border-radius: 8px;
             overflow: hidden;
             position: relative;
+            background: var(--bg-light);
         }
 
         .hero-image img {
@@ -126,142 +129,42 @@
             object-fit: cover;
         }
 
-        .hero-image::before {
-            content: '';
-            font-size: 4rem;
-            position: absolute;
+        /* Info Section */
+        .info-section {
+            padding: 10rem 4rem;
+            background: var(--bg-light);
         }
 
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .info-container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .hero-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .hero-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .hero-tags {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            background: var(--bg-secondary);
-            border-radius: 50px;
-            font-size: 0.9rem;
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 4rem;
             color: var(--text-primary);
         }
 
-        /* 图片画廊 */
-        .gallery-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 3rem 2rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-        }
-
-        .gallery-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-            border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px -6px rgb(0 0 0 / 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-item::before {
-            content: '📸';
-            font-size: 3rem;
-            position: absolute;
-        }
-
-        .content-grid {
+        .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 4rem;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -6px rgb(0 0 0 / 0.2);
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-blue);
+        .info-item h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            color: var(--text-primary);
         }
 
-        .card-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .card-content {
-            color: var(--text-secondary);
+        .info-item p {
+            font-size: 1rem;
             line-height: 1.8;
+            color: var(--text-secondary);
         }
 
         .info-list {
@@ -270,366 +173,267 @@
 
         .info-list li {
             padding: 0.75rem 0;
-            border-bottom: 1px solid #e2e8f0;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .info-list li:last-child {
             border-bottom: none;
         }
 
-        .info-label {
-            font-weight: 600;
+        .info-list li strong {
             color: var(--text-primary);
-            margin-right: 0.5rem;
+            font-weight: 600;
+            margin-right: 1rem;
         }
 
-        .highlight-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
+        /* Gallery Section */
+        .gallery-section {
+            padding: 10rem 4rem;
+            background: var(--secondary-color);
         }
 
-        .highlight-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight-text {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 800px;
+        .gallery-container {
+            max-width: 1400px;
             margin: 0 auto;
-            line-height: 1.8;
         }
 
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/5;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 10rem 4rem;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .quote-text {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+
+        .quote-author {
+            margin-top: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Footer */
         footer {
+            padding: 4rem;
+            background: var(--bg-light);
             text-align: center;
-            padding: 2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 3rem;
         }
 
-        .image-placeholder {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+        footer p {
             color: var(--text-secondary);
-            opacity: 0.6;
+            font-size: 0.9rem;
         }
 
+        /* Responsive */
         @media (max-width: 968px) {
-            .hero-section {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero {
+                padding: 0 2rem;
+            }
+
+            .hero-content {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .character-name {
-                font-size: 2rem;
+                gap: 3rem;
             }
 
-            .character-subtitle {
-                font-size: 1.2rem;
+            .hero-image {
+                height: 500px;
             }
 
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            header {
-                padding: 2rem 1rem;
-            }
-
-            .hero-section {
-                padding: 2rem;
+            .info-section,
+            .gallery-section,
+            .quote-section {
+                padding: 6rem 2rem;
             }
 
             .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-template-columns: 1fr;
             }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero-text h1 {
+                letter-spacing: -2px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <div id="waves-background"></div>
-    <div class="container">
-        <header>
-            <h1 class="character-name">天童アリス</h1>
-            <p class="character-subtitle">Tendou Aris</p>
-            <span class="character-title">游戏开发部 · AL-1S</span>
-        </header>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">ARIS</a>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#gallery">画廊</a></li>
+        </ul>
+    </nav>
 
-        <!-- 角色展示区域 -->
-        <section class="hero-section">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>天童<br>アリス</h1>
+                <p class="subtitle">Tendou Aris</p>
+                <p class="role">Game Development Club · AL-1S</p>
+            </div>
             <div class="hero-image">
-                <img src="images/aris-main.png" alt="天童アリス" onerror="this.style.display='none'">
-                <div class="image-placeholder" style="display: none;">
-                    <div style="font-size: 4rem; margin-bottom: 0.5rem;">🎮</div>
-                    <div>角色立绘</div>
-                </div>
+                <img src="images/aris-main.png" alt="天童アリス">
             </div>
-            <div class="hero-content">
-                <h2 class="hero-title">游戏开发部的编程天才</h2>
-                <p class="hero-description">
-                    天童アリス是千年科学学园游戏开发部的核心成员，自称"AL-1S"。
-                    她拥有出色的游戏开发和编程能力，对游戏充满热情。
-                    性格认真负责，虽然有时会显得有些固执，但对朋友十分忠诚。
-                </p>
-                <div class="hero-tags">
-                    <span class="tag">千年科学学园</span>
-                    <span class="tag">游戏开发部</span>
-                    <span class="tag">编程专家</span>
-                    <span class="tag">Striker</span>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 图片画廊 -->
-        <section class="gallery-section">
-            <h2 class="gallery-title">角色画廊</h2>
+    <!-- Info Section -->
+    <section id="about" class="info-section">
+        <div class="info-container">
+            <h2 class="section-title">关于爱丽丝</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>基本信息</h3>
+                    <ul class="info-list">
+                        <li><strong>姓名</strong>天童アリス</li>
+                        <li><strong>英文名</strong>Tendou Aris</li>
+                        <li><strong>学校</strong>千年科学学园</li>
+                        <li><strong>社团</strong>游戏开发部</li>
+                        <li><strong>年龄</strong>16岁</li>
+                        <li><strong>生日</strong>3月25日</li>
+                        <li><strong>身高</strong>159cm</li>
+                    </ul>
+                </div>
+
+                <div class="info-item">
+                    <h3>角色特点</h3>
+                    <p>
+                        天童アリス是千年科学学园游戏开发部的核心成员，自称"AL-1S"。
+                        她拥有出色的游戏开发和编程能力，对游戏充满热情。
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        性格认真负责，虽然有时会显得有些固执，但对朋友十分忠诚。
+                        在游戏开发方面展现出超凡的天赋和创造力。
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h3>战斗定位</h3>
+                    <ul class="info-list">
+                        <li><strong>职业</strong>Striker</li>
+                        <li><strong>武器</strong>AR</li>
+                        <li><strong>攻击类型</strong>爆发</li>
+                        <li><strong>防御类型</strong>轻装甲</li>
+                        <li><strong>稀有度</strong>⭐⭐⭐</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-container">
+            <h2 class="section-title">角色画廊</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/aris-1.png" alt="爱丽丝 1" onerror="this.style.display='none'">
+                    <img src="images/aris-1.png" alt="爱丽丝 1">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/aris-2.jpg" alt="爱丽丝 2" onerror="this.style.display='none'">
+                    <img src="images/aris-2.jpg" alt="爱丽丝 2">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/aris-3.png" alt="爱丽丝 3" onerror="this.style.display='none'">
+                    <img src="images/aris-3.png" alt="爱丽丝 3">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/aris-4.png" alt="爱丽丝 4" onerror="this.style.display='none'">
-                </div>
-            </div>
-        </section>
-
-        <div class="content-grid">
-            <div class="card">
-                <h2 class="card-title">
-                    <span class="card-icon">✦</span>
-                    基本信息
-                </h2>
-                <ul class="info-list">
-                    <li><span class="info-label">姓名：</span>天童アリス（Tendou Aris）</li>
-                    <li><span class="info-label">学校：</span>千年科学学园</li>
-                    <li><span class="info-label">社团：</span>游戏开发部</li>
-                    <li><span class="info-label">年龄：</span>16岁</li>
-                    <li><span class="info-label">生日：</span>3月25日</li>
-                    <li><span class="info-label">身高：</span>159cm</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2 class="card-title">
-                    <span class="card-icon">⚡</span>
-                    角色特点
-                </h2>
-                <div class="card-content">
-                    <p>爱丽丝是千年科学学园游戏开发部的核心成员，自称"AL-1S"。她拥有出色的游戏开发和编程能力，对游戏充满热情。</p>
-                    <br>
-                    <p>性格认真负责，虽然有时会显得有些固执，但对朋友十分忠诚。在游戏开发方面展现出超凡的天赋和创造力。</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 class="card-title">
-                    <span class="card-icon">♦</span>
-                    战斗定位
-                </h2>
-                <ul class="info-list">
-                    <li><span class="info-label">职业：</span>Striker</li>
-                    <li><span class="info-label">武器：</span>AR</li>
-                    <li><span class="info-label">攻击类型：</span>爆发</li>
-                    <li><span class="info-label">防御类型：</span>轻装甲</li>
-                    <li><span class="info-label">角色定位：</span>输出/支援</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2 class="card-title">
-                    <span class="card-icon">★</span>
-                    个人爱好
-                </h2>
-                <div class="card-content">
-                    <p><strong>游戏开发：</strong>热衷于创作和开发各类游戏，特别是RPG类型。</p>
-                    <br>
-                    <p><strong>编程技术：</strong>精通多种编程语言，对新技术充满好奇心。</p>
-                    <br>
-                    <p><strong>团队协作：</strong>与游戏开发部的伙伴们一起实现梦想中的游戏项目。</p>
+                    <img src="images/aris-4.png" alt="爱丽丝 4">
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="highlight-section">
-            <h2 class="highlight-title">「用代码创造无限可能」</h2>
-            <p class="highlight-text">
-                作为游戏开发部的核心成员，爱丽丝始终坚信技术能够创造美好的未来。
-                她用自己的编程技能和创造力，为基沃托斯的学生们带来欢乐和惊喜。
-                在她的世界里，每一行代码都承载着梦想，每一个游戏都是一段独特的冒险。
-            </p>
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="quote-container">
+            <p class="quote-text">用代码创造无限可能</p>
+            <p class="quote-author">天童アリス</p>
         </div>
-    </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
         <p>© 2026 Blue Archive Fan Site | 天童アリス (Tendou Aris)</p>
-        <p style="margin-top: 0.5rem; opacity: 0.8;">本站为粉丝网站，所有角色版权归 NEXON Games 所有</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">本站为粉丝网站，所有角色版权归 NEXON Games 所有</p>
     </footer>
-
-    <script>
-        // 显示图片加载失败时的占位符
-        document.querySelectorAll('.hero-image img').forEach(img => {
-            img.onerror = function() {
-                this.style.display = 'none';
-                const placeholder = this.nextElementSibling;
-                if (placeholder) placeholder.style.display = 'block';
-            };
-        });
-
-        // 波浪背景动画
-        (function() {
-            const container = document.getElementById('waves-background');
-            if (!container) return;
-
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            container.appendChild(canvas);
-
-            let width, height;
-            let particles = [];
-            const particleCount = 100;
-            let mouseX = 0, mouseY = 0;
-            let time = 0;
-
-            function resize() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-                initParticles();
-            }
-
-            function initParticles() {
-                particles = [];
-                for (let i = 0; i < particleCount; i++) {
-                    particles.push({
-                        x: Math.random() * width,
-                        y: Math.random() * height,
-                        vx: (Math.random() - 0.5) * 0.5,
-                        vy: (Math.random() - 0.5) * 0.5,
-                        size: Math.random() * 3 + 1,
-                        phase: Math.random() * Math.PI * 2
-                    });
-                }
-            }
-
-            function draw() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, width, height);
-
-                time += 0.01;
-
-                // 绘制波浪网格
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-                ctx.lineWidth = 1;
-
-                const spacing = 40;
-                const waveHeight = 20;
-
-                // 横向波浪线
-                for (let y = spacing; y < height; y += spacing) {
-                    ctx.beginPath();
-                    for (let x = 0; x <= width; x += 5) {
-                        const wave1 = Math.sin(x * 0.01 + time + y * 0.01) * waveHeight;
-                        const wave2 = Math.sin(x * 0.02 - time * 0.7 + y * 0.02) * waveHeight * 0.5;
-                        const finalY = y + wave1 + wave2;
-                        if (x === 0) {
-                            ctx.moveTo(x, finalY);
-                        } else {
-                            ctx.lineTo(x, finalY);
-                        }
-                    }
-                    ctx.stroke();
-                }
-
-                // 纵向波浪线
-                for (let x = spacing; x < width; x += spacing) {
-                    ctx.beginPath();
-                    for (let y = 0; y <= height; y += 5) {
-                        const wave1 = Math.sin(y * 0.01 + time + x * 0.01) * waveHeight;
-                        const wave2 = Math.sin(y * 0.02 - time * 0.7 + x * 0.02) * waveHeight * 0.5;
-                        const finalX = x + wave1 + wave2;
-                        if (y === 0) {
-                            ctx.moveTo(finalX, y);
-                        } else {
-                            ctx.lineTo(finalX, y);
-                        }
-                    }
-                    ctx.stroke();
-                }
-
-                // 绘制粒子
-                particles.forEach((p, i) => {
-                    // 更新位置
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    // 波浪运动
-                    const waveX = Math.sin(p.y * 0.01 + time + p.phase) * 2;
-                    const waveY = Math.cos(p.x * 0.01 + time + p.phase) * 2;
-                    p.x += waveX * 0.1;
-                    p.y += waveY * 0.1;
-
-                    // 边界检测
-                    if (p.x < 0 || p.x > width) p.vx *= -1;
-                    if (p.y < 0 || p.y > height) p.vy *= -1;
-                    p.x = Math.max(0, Math.min(width, p.x));
-                    p.y = Math.max(0, Math.min(height, p.y));
-
-                    // 绘制粒子
-                    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
-                    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
-                    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                    ctx.fillStyle = gradient;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // 连接相邻粒子
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const p2 = particles[j];
-                        const dx = p.x - p2.x;
-                        const dy = p.y - p2.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-
-                        if (dist < 120) {
-                            ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 * (1 - dist / 120)})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.beginPath();
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.stroke();
-                        }
-                    }
-                });
-
-                requestAnimationFrame(draw);
-            }
-
-            window.addEventListener('resize', resize);
-            window.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-
-            resize();
-            draw();
-        })();
-    </script>
 </body>
 </html>
