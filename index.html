@@ -28,48 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -391,14 +349,6 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            nav {
-                padding: 1.5rem 2rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
             .hero {
                 padding: 0 2rem;
             }
@@ -441,22 +391,6 @@
         }
 
         @media (max-width: 640px) {
-            nav {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-
             .hero-text h1 {
                 letter-spacing: -2px;
             }
@@ -469,17 +403,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="#" class="logo">AL-1S</a>
-        <ul class="nav-links">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#story">故事</a></li>
-            <li><a href="#profile">档案</a></li>
-            <li><a href="#gallery">画廊</a></li>
-        </ul>
-    </nav>
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
