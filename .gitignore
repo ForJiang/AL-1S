@@ -1,8 +1,21 @@
-# 生成物 / 本地工具
-tools/data-dump.json
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
 __pycache__/
 *.pyc
-.DS_Store
 
-# 字体原始 TTF（重新子集化才需要，10MB；woff2 子集已入库）
-assets/fonts/src/
+# debug
+npm-debug.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
