@@ -103,10 +103,10 @@ export function GlyphSwell({
         oy = ((H - (rows - 1) * size) / 2) * dpr;
       for (let j = 0; j < rows; j++) {
         for (let i = 0; i < cols; i++) {
-          // A low murmur everywhere, so the field is never fully still.
+          // Idle murmur on every cell, so the texture visibly fills the viewport.
           let v =
-            0.06 +
-            0.05 * Math.sin(i * 0.37 + t * 0.6) * Math.sin(j * 0.29 - t * 0.45);
+            0.12 +
+            0.06 * Math.sin(i * 0.37 + t * 0.6) * Math.sin(j * 0.29 - t * 0.45);
           for (const s of swells) {
             const age = t - s.t,
               d = Math.hypot(i - s.x, j - s.y),
@@ -118,7 +118,7 @@ export function GlyphSwell({
           if (v < 0.035) continue;
           const lv = Math.min(L - 1, Math.floor(v * L * 1.05));
           const crest = v > 0.8 ? 1 : 0;
-          ctx.globalAlpha = Math.min(1, 0.2 + v * 1.15);
+          ctx.globalAlpha = Math.min(1, 0.28 + v * 1.15);
           ctx.drawImage(
             atlas,
             lv * S,
