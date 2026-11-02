@@ -31,4 +31,6 @@ export const GALLERY_SRCS = [
   "aris-g4.jpg",
   "aris-g5.jpg",
   "aris-g6.jpg",
+  "aris-g7.jpg",
+  "aris-g8.jpg",
 ] as const;

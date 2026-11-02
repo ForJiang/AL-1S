@@ -122,6 +122,8 @@ export const en: Dictionary = {
       "Aris shyly looking down",
       "Aris riding a bicycle by the sea at dusk",
       "Aris in winter clothes by the lakeside",
+      "Key with white hair and red eyes",
+      "Aris in casual clothes with sunglasses and a school bag",
     ],
   },
   quote: {

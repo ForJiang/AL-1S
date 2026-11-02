@@ -59,7 +59,16 @@ export interface Dictionary {
     title: string;
     intro: string;
     /* 与 config.ts 的 GALLERY_SRCS 按下标一一对应 */
-    alts: [string, string, string, string, string, string];
+    alts: [
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+    ];
   };
   quote: { text: string; attribution: string };
   footer: { copyright: string; disclaimer: string; sources: string };
