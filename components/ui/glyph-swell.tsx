@@ -98,7 +98,7 @@ export function GlyphSwell({
     const frame = (t: number) => {
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      while (swells.length && t - swells[0].t > 6) swells.shift();
+      while (swells.length && t - swells[0].t > 3) swells.shift();
       const ox = ((W - (cols - 1) * size) / 2) * dpr,
         oy = ((H - (rows - 1) * size) / 2) * dpr;
       for (let j = 0; j < rows; j++) {
@@ -111,10 +111,10 @@ export function GlyphSwell({
           for (const s of swells) {
             const age = t - s.t,
               d = Math.hypot(i - s.x, j - s.y),
-              front = age * 17;
+              front = age * 21;
             const band = Math.exp(-((d - front) ** 2) / 8);
             if (band < 0.01) continue;
-            v += (s.a * band * Math.exp(-age * 0.55)) / (1 + d * 0.015);
+            v += (s.a * band * Math.exp(-age * 0.9)) / (1 + d * 0.015);
           }
           if (v < 0.035) continue;
           const lv = Math.min(L - 1, Math.floor(v * L * 1.05));
