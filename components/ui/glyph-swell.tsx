@@ -103,10 +103,11 @@ export function GlyphSwell({
         oy = ((H - (rows - 1) * size) / 2) * dpr;
       for (let j = 0; j < rows; j++) {
         for (let i = 0; i < cols; i++) {
-          // Idle murmur on every cell, so the texture visibly fills the viewport.
+          // Idle murmur on every cell with tight variance, so no blank patches
+          // appear anywhere in the field.
           let v =
             0.12 +
-            0.06 * Math.sin(i * 0.37 + t * 0.6) * Math.sin(j * 0.29 - t * 0.45);
+            0.04 * Math.sin(i * 0.37 + t * 0.6) * Math.sin(j * 0.29 - t * 0.45);
           for (const s of swells) {
             const age = t - s.t,
               d = Math.hypot(i - s.x, j - s.y),
