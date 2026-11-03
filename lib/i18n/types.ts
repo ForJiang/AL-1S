@@ -1,3 +1,4 @@
+/* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 export type Lang = "zh-CN" | "zh-TW" | "ja" | "en";
 
 /* 词典契约：所有语言必须逐键对齐；元组定长由 tsc 静态保证，
@@ -71,5 +72,5 @@ export interface Dictionary {
     ];
   };
   quote: { text: string; attribution: string };
-  footer: { copyright: string; disclaimer: string; sources: string };
+  footer: { copyright: string; disclaimer: string; sources: string; credit: string };
 }

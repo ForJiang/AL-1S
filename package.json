@@ -2,6 +2,13 @@
   "name": "al-1s",
   "version": "1.0.0",
   "private": true,
+  "description": "蔚蓝档案天童アリス（Tendou Aris）四语言粉丝站",
+  "author": "ForJiang <https://github.com/ForJiang>",
+  "homepage": "https://forjiang.github.io/AL-1S/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ForJiang/AL-1S.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "NEXT_PUBLIC_BASE_PATH=/AL-1S next build",

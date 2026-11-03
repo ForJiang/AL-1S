@@ -1,5 +1,7 @@
 "use client";
 
+/* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
+
 import { useEffect } from "react";
 import GlyphSwell from "@/components/ui/glyph-swell";
 import { DEFAULT_LANG, LANGS, langPath, type Lang } from "@/lib/i18n";

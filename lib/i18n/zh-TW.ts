@@ -1,3 +1,4 @@
+/* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 import type { Dictionary } from "./types";
 
 /* zh-TW 词典：元素按位置与 zh-CN 基准一一对应
@@ -133,5 +134,6 @@ export const zhTW: Dictionary = {
     copyright: "© 2026 Blue Archive Fan Site | 天童愛麗絲 (Tendou Aris)",
     disclaimer: "本站為粉絲網站，所有角色版權歸 NEXON Games 所有",
     sources: "資料來源：Blue Archive Wiki, Kivo Wiki, Moegirl",
+    credit: "網站由 ForJiang 設計與構建",
   },
 };

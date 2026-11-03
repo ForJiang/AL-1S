@@ -1,3 +1,4 @@
+/* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GlyphSwell from "@/components/ui/glyph-swell";
@@ -284,6 +285,9 @@ export default async function LangPage({
         </p>
         <p className="mt-4 text-xs text-gray-600 opacity-50">
           {d.footer.sources}
+        </p>
+        <p className="mt-3 text-xs text-gray-600 opacity-50">
+          {d.footer.credit}
         </p>
       </footer>
     </main>

@@ -1,5 +1,8 @@
 "use client";
 
+/* AL-1S 定制版 · © 2026 ForJiang · github.com/ForJiang
+   原组件 GlyphSwell 来自 React Bits（David Haz），已深度修改 */
+
 import { useEffect, useRef, type ReactNode } from "react";
 
 /**

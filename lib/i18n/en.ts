@@ -1,3 +1,4 @@
+/* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 import type { Dictionary } from "./types";
 
 /* en 词典：Worker W3 译自 zh-CN 基准，元素按位置一一对应，禁止增删或调序。
@@ -134,5 +135,6 @@ export const en: Dictionary = {
     copyright: "© 2026 Blue Archive Fan Site | Tendou Aris (天童アリス)",
     disclaimer: "This is a fan site. All character rights belong to NEXON Games.",
     sources: "Sources: Blue Archive Wiki, Kivo Wiki, Moegirl",
+    credit: "Designed & built by ForJiang",
   },
 };

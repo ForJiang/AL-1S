@@ -1,3 +1,4 @@
+/* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 import { isLang, type Lang } from "./config";
 import type { Dictionary } from "./types";
 import { zhCN } from "./zh-CN";
