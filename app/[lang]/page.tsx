@@ -125,12 +125,12 @@ export default async function LangPage({
               {d.hero.tagline}
             </p>
           </div>
-          <div className="relative hidden h-[700px] max-h-[80vh] overflow-hidden rounded-lg bg-gray-100 lg:block">
+          <div className="relative hidden h-[700px] max-h-[80vh] rounded-lg bg-gray-100 lg:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={img(HERO_IMG)}
               alt={d.hero.imageAlt}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
             />
           </div>
         </div>
@@ -146,12 +146,12 @@ export default async function LangPage({
                 <p key={p.slice(0, 12)}>{p}</p>
               ))}
             </div>
-            <div className="sticky top-24 hidden aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 lg:block">
+            <div className="hidden lg:block">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img(STORY_IMG)}
                 alt={d.story.imageAlt}
-                className="h-full w-full object-cover"
+                className="w-full rounded-lg"
               />
             </div>
           </div>
@@ -247,17 +247,14 @@ export default async function LangPage({
           <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
             {d.gallery.intro}
           </p>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2">
             {GALLERY_SRCS.map((src, i) => (
-              <div
-                key={src}
-                className="aspect-[4/5] overflow-hidden rounded-lg bg-gray-100"
-              >
+              <div key={src} className="overflow-hidden rounded-lg">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={img(src)}
                   alt={d.gallery.alts[i]}
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full transition-transform duration-500 hover:scale-105"
                 />
               </div>
             ))}
