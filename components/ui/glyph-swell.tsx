@@ -48,7 +48,7 @@ export function GlyphSwell({
 
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const coarse = !matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const dpr = Math.min(devicePixelRatio, 2);
+    const dpr = Math.min(devicePixelRatio, 3);
     const size = coarse ? Math.round(cell * 0.85) : cell;
     const L = ramp.length;
 
@@ -62,7 +62,7 @@ export function GlyphSwell({
       a.clearRect(0, 0, atlas.width, atlas.height);
       a.textAlign = "center";
       a.textBaseline = "middle";
-      a.font = `500 ${Math.round(size * 0.82 * dpr)}px "Geist Mono", "JetBrains Mono", ui-monospace, monospace`;
+      a.font = `700 ${Math.round(size * 0.9 * dpr)}px "Geist Mono", "JetBrains Mono", ui-monospace, monospace`;
       [colors[1], colors[2]].forEach((c, row) => {
         a.fillStyle = c;
         for (let i = 0; i < L; i++)
@@ -110,14 +110,14 @@ export function GlyphSwell({
             const age = t - s.t,
               d = Math.hypot(i - s.x, j - s.y),
               front = age * 17;
-            const band = Math.exp(-((d - front) ** 2) / 8);
+            const band = Math.exp(-((d - front) ** 2) / 5);
             if (band < 0.01) continue;
             v += (s.a * band * Math.exp(-age * 0.55)) / (1 + d * 0.015);
           }
           if (v < 0.035) continue;
           const lv = Math.min(L - 1, Math.floor(v * L * 1.05));
           const crest = v > 0.8 ? 1 : 0;
-          ctx.globalAlpha = Math.min(1, 0.2 + v * 1.15);
+          ctx.globalAlpha = Math.min(1, 0.25 + v * 1.3);
           ctx.drawImage(
             atlas,
             lv * S,
