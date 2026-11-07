@@ -3,6 +3,7 @@
 /* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 import { useEffect, useState } from "react";
 import GlyphSwell from "@/components/ui/glyph-swell";
+import ImgReveal from "@/components/img-reveal";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
 import { LangSwitcher } from "@/components/lang-switcher";
 import {
@@ -132,7 +133,7 @@ export function SitePage() {
                 </TextBlockAnimation>
               ))}
             </div>
-            <div className="hidden lg:block">
+            <ImgReveal className="hidden lg:block">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img(STORY_IMG)}
@@ -143,7 +144,7 @@ export function SitePage() {
                 decoding="async"
                 className="w-full rounded-lg"
               />
-            </div>
+            </ImgReveal>
           </div>
         </div>
       </section>
@@ -292,7 +293,7 @@ export function SitePage() {
           </TextBlockAnimation>
           <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2">
             {GALLERY_ITEMS.map((item, i) => (
-              <div key={item.src} className="overflow-hidden rounded-lg">
+              <ImgReveal key={item.src} className="overflow-hidden rounded-lg">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={img(item.src)}
@@ -303,7 +304,7 @@ export function SitePage() {
                   decoding="async"
                   className="w-full transition-transform duration-500 hover:scale-105"
                 />
-              </div>
+              </ImgReveal>
             ))}
           </div>
         </div>

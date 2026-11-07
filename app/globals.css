@@ -70,6 +70,28 @@ html {
   }
 }
 
+/* 图片擦除揭示（ImgReveal）：进入视口加 .play，clip-path 从左到右扫出 */
+.img-reveal img {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.06);
+}
+.img-reveal.play img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+  transition:
+    clip-path 0.9s cubic-bezier(0.87, 0, 0.13, 1),
+    transform 0.9s cubic-bezier(0.87, 0, 0.13, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .img-reveal img {
+    clip-path: none;
+    transform: none;
+  }
+  .img-reveal.play img {
+    transition: none;
+  }
+}
+
 body {
   @apply bg-white text-black antialiased;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
