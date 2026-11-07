@@ -107,7 +107,7 @@ export function SitePage({ lang }: { lang: Lang }) {
             height={HERO_DIMS.h}
             alt={d.hero.imageAlt}
             fetchPriority="high"
-            className="mx-auto mt-10 block h-[60vh] max-h-[700px] w-auto rounded-lg bg-gray-100"
+            className="mx-auto mt-8 block h-[45vh] max-h-[520px] w-auto rounded-lg bg-gray-100"
           />
         </div>
       </section>
