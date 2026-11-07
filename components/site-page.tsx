@@ -3,6 +3,7 @@
 /* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 import { useEffect, useState } from "react";
 import GlyphSwell from "@/components/ui/glyph-swell";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 import { LangSwitcher } from "@/components/lang-switcher";
 import {
   GALLERY_ITEMS,
@@ -32,11 +33,22 @@ function InfoList({ items }: { items: Row[] }) {
   );
 }
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function SectionTitle({
+  children,
+  lang,
+}: {
+  children: React.ReactNode;
+  lang: Lang;
+}) {
   return (
-    <h2 className="mb-8 text-4xl font-black tracking-tight sm:text-5xl">
-      {children}
-    </h2>
+    <TextBlockAnimation
+      as="h2"
+      key={lang}
+      lines={[String(children)]}
+      blockColor="#2563eb"
+      stagger={0.06}
+      className="mb-8 text-4xl font-black tracking-tight sm:text-5xl"
+    />
   );
 }
 
@@ -60,14 +72,19 @@ export function SitePage() {
 
       <LangSwitcher current={lang} onSwitch={setLang} />
 
-      {/* Hero：纯文字（主图在下方角色画廊） */}
+      {/* Hero：纯文字（主图在下方角色画廊），标题加载即播块状揭示 */}
       <section className="flex min-h-screen items-center">
         <div className="mx-auto w-full max-w-[1400px] px-8">
-          <h1 className="mb-6 text-6xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-8xl">
-            {d.hero.titleLines[0]}
-            <br />
-            {d.hero.titleLines[1]}
-          </h1>
+          <TextBlockAnimation
+            as="h1"
+            key={lang}
+            lines={d.hero.titleLines}
+            animateOnScroll={false}
+            delay={0.2}
+            duration={0.8}
+            blockColor="#2563eb"
+            className="mb-6 text-6xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-8xl"
+          />
           <p className="mb-4 text-xl font-light text-gray-600 sm:text-2xl">
             {d.hero.subtitle}
           </p>
@@ -80,7 +97,7 @@ export function SitePage() {
       {/* 背景故事 */}
       <section className="bg-white/75 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
-          <SectionTitle>{d.story.title}</SectionTitle>
+          <SectionTitle lang={lang}>{d.story.title}</SectionTitle>
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-24">
             <div className="space-y-8 text-lg leading-loose">
               {d.story.paragraphs.map((p) => (
@@ -106,7 +123,7 @@ export function SitePage() {
       {/* 角色档案 */}
       <section className="bg-white/55 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
-          <SectionTitle>{d.profile.title}</SectionTitle>
+          <SectionTitle lang={lang}>{d.profile.title}</SectionTitle>
           <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
             {d.profile.intro}
           </p>
@@ -140,7 +157,7 @@ export function SitePage() {
       {/* 技能系统 */}
       <section className="bg-white/75 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
-          <SectionTitle>{d.skills.title}</SectionTitle>
+          <SectionTitle lang={lang}>{d.skills.title}</SectionTitle>
           <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
             {d.skills.intro}
           </p>
@@ -164,7 +181,7 @@ export function SitePage() {
       {/* 人物关系 */}
       <section className="bg-white/55 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
-          <SectionTitle>{d.relationships.title}</SectionTitle>
+          <SectionTitle lang={lang}>{d.relationships.title}</SectionTitle>
           <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
             {d.relationships.intro}
           </p>
@@ -188,7 +205,7 @@ export function SitePage() {
       {/* 角色画廊 */}
       <section className="bg-white/75 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
-          <SectionTitle>{d.gallery.title}</SectionTitle>
+          <SectionTitle lang={lang}>{d.gallery.title}</SectionTitle>
           <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
             {d.gallery.intro}
           </p>
@@ -214,9 +231,14 @@ export function SitePage() {
       {/* 引用 */}
       <section className="bg-black/85 py-24 text-center text-white">
         <div className="mx-auto max-w-[900px] px-8">
-          <p className="text-3xl font-light leading-snug tracking-tight sm:text-5xl">
-            {d.quote.text}
-          </p>
+          <TextBlockAnimation
+            as="p"
+            key={lang}
+            lines={[d.quote.text]}
+            blockColor="#eef1f6"
+            duration={0.8}
+            className="text-3xl font-light leading-snug tracking-tight sm:text-5xl"
+          />
           <p className="mt-8 text-sm font-semibold uppercase tracking-[2px] text-white/60">
             {d.quote.attribution}
           </p>
