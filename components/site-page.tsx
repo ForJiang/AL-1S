@@ -17,7 +17,7 @@ import type { Lang, Row } from "@/lib/i18n";
 /* Hero 背景的 glyph 配色：浅蓝灰底、蓝墨、深蓝波峰 */
 const HERO_COLORS: [string, string, string] = ["#eef1f6", "#2563eb", "#1e3a8a"];
 
-function InfoList({ items }: { items: Row[] }) {
+function InfoList({ items, lang }: { items: Row[]; lang: Lang }) {
   return (
     <ul>
       {items.map(([k, v]) => (
@@ -25,8 +25,15 @@ function InfoList({ items }: { items: Row[] }) {
           key={k}
           className="border-b border-black/5 py-3 text-gray-600 last:border-none"
         >
-          <strong className="mr-4 font-semibold text-black">{k}</strong>
-          {v}
+          <TextBlockAnimation
+            as="span"
+            key={`${lang}-${k}`}
+            blockColor="#2563eb"
+            duration={0.5}
+          >
+            <strong className="mr-4 font-semibold text-black">{k}</strong>
+            {v}
+          </TextBlockAnimation>
         </li>
       ))}
     </ul>
@@ -85,12 +92,26 @@ export function SitePage() {
             blockColor="#2563eb"
             className="mb-6 text-6xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-8xl"
           />
-          <p className="mb-4 text-xl font-light text-gray-600 sm:text-2xl">
+          <TextBlockAnimation
+            as="p"
+            key={`sub-${lang}`}
+            animateOnScroll={false}
+            delay={0.9}
+            blockColor="#2563eb"
+            className="mb-4 text-xl font-light text-gray-600 sm:text-2xl"
+          >
             {d.hero.subtitle}
-          </p>
-          <p className="text-sm font-semibold uppercase tracking-[2px] text-blue-600">
+          </TextBlockAnimation>
+          <TextBlockAnimation
+            as="p"
+            key={`tag-${lang}`}
+            animateOnScroll={false}
+            delay={1.1}
+            blockColor="#2563eb"
+            className="text-sm font-semibold uppercase tracking-[2px] text-blue-600"
+          >
             {d.hero.tagline}
-          </p>
+          </TextBlockAnimation>
         </div>
       </section>
 
@@ -100,8 +121,15 @@ export function SitePage() {
           <SectionTitle lang={lang}>{d.story.title}</SectionTitle>
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-24">
             <div className="space-y-8 text-lg leading-loose">
-              {d.story.paragraphs.map((p) => (
-                <p key={p.slice(0, 12)}>{p}</p>
+              {d.story.paragraphs.map((p, i) => (
+                <TextBlockAnimation
+                  as="p"
+                  key={`${lang}-story-${i}`}
+                  blockColor="#2563eb"
+                  duration={0.7}
+                >
+                  {p}
+                </TextBlockAnimation>
               ))}
             </div>
             <div className="hidden lg:block">
@@ -124,29 +152,53 @@ export function SitePage() {
       <section className="bg-white/55 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
           <SectionTitle lang={lang}>{d.profile.title}</SectionTitle>
-          <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
+          <TextBlockAnimation
+            as="p"
+            key={`intro-${lang}`}
+            blockColor="#2563eb"
+            className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600"
+          >
             {d.profile.intro}
-          </p>
+          </TextBlockAnimation>
           <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
             <div>
-              <h3 className="mb-6 text-xl font-bold">
-                {d.profile.basicsHeading}
-              </h3>
-              <InfoList items={d.profile.basics} />
+              <TextBlockAnimation
+                as="h3"
+                key={`${lang}-bh`}
+                lines={[d.profile.basicsHeading]}
+                blockColor="#2563eb"
+                className="mb-6 text-xl font-bold"
+              />
+              <InfoList items={d.profile.basics} lang={lang} />
             </div>
             <div>
-              <h3 className="mb-6 text-xl font-bold">
-                {d.profile.combatHeading}
-              </h3>
-              <InfoList items={d.profile.combat} />
+              <TextBlockAnimation
+                as="h3"
+                key={`${lang}-ch`}
+                lines={[d.profile.combatHeading]}
+                blockColor="#2563eb"
+                className="mb-6 text-xl font-bold"
+              />
+              <InfoList items={d.profile.combat} lang={lang} />
             </div>
             <div>
-              <h3 className="mb-6 text-xl font-bold">
-                {d.profile.personalityHeading}
-              </h3>
+              <TextBlockAnimation
+                as="h3"
+                key={`${lang}-ph`}
+                lines={[d.profile.personalityHeading]}
+                blockColor="#2563eb"
+                className="mb-6 text-xl font-bold"
+              />
               <div className="space-y-4 text-gray-600">
-                {d.profile.personality.map((p) => (
-                  <p key={p.slice(0, 12)}>{p}</p>
+                {d.profile.personality.map((p, i) => (
+                  <TextBlockAnimation
+                    as="p"
+                    key={`${lang}-pers-${i}`}
+                    blockColor="#2563eb"
+                    duration={0.7}
+                  >
+                    {p}
+                  </TextBlockAnimation>
                 ))}
               </div>
             </div>
@@ -158,20 +210,32 @@ export function SitePage() {
       <section className="bg-white/75 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
           <SectionTitle lang={lang}>{d.skills.title}</SectionTitle>
-          <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
+          <TextBlockAnimation
+            as="p"
+            key={`skintro-${lang}`}
+            blockColor="#2563eb"
+            className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600"
+          >
             {d.skills.intro}
-          </p>
+          </TextBlockAnimation>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             {d.skills.items.map((s) => (
               <div
                 key={s.name}
                 className="rounded-lg bg-gray-100 p-12 transition-transform duration-300 hover:-translate-y-2"
               >
-                <div className="mb-6 text-sm font-semibold uppercase tracking-wider text-blue-600">
-                  {s.type}
-                </div>
-                <h4 className="mb-4 text-2xl font-bold">{s.name}</h4>
-                <p className="leading-relaxed text-gray-600">{s.desc}</p>
+                <TextBlockAnimation
+                  as="div"
+                  key={`${lang}-${s.name}`}
+                  blockColor="#2563eb"
+                  duration={0.7}
+                >
+                  <div className="mb-6 text-sm font-semibold uppercase tracking-wider text-blue-600">
+                    {s.type}
+                  </div>
+                  <h4 className="mb-4 text-2xl font-bold">{s.name}</h4>
+                  <p className="leading-relaxed text-gray-600">{s.desc}</p>
+                </TextBlockAnimation>
               </div>
             ))}
           </div>
@@ -182,20 +246,32 @@ export function SitePage() {
       <section className="bg-white/55 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
           <SectionTitle lang={lang}>{d.relationships.title}</SectionTitle>
-          <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
+          <TextBlockAnimation
+            as="p"
+            key={`reintro-${lang}`}
+            blockColor="#2563eb"
+            className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600"
+          >
             {d.relationships.intro}
-          </p>
+          </TextBlockAnimation>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {d.relationships.items.map((r) => (
               <div
                 key={r.name}
                 className="rounded-lg border-l-4 border-blue-600 bg-white p-8"
               >
-                <h4 className="text-xl font-bold">{r.name}</h4>
-                <div className="mb-4 mt-1 text-sm font-semibold text-blue-600">
-                  {r.role}
-                </div>
-                <p className="leading-relaxed text-gray-600">{r.desc}</p>
+                <TextBlockAnimation
+                  as="div"
+                  key={`${lang}-${r.name}`}
+                  blockColor="#2563eb"
+                  duration={0.7}
+                >
+                  <h4 className="text-xl font-bold">{r.name}</h4>
+                  <div className="mb-4 mt-1 text-sm font-semibold text-blue-600">
+                    {r.role}
+                  </div>
+                  <p className="leading-relaxed text-gray-600">{r.desc}</p>
+                </TextBlockAnimation>
               </div>
             ))}
           </div>
@@ -206,9 +282,14 @@ export function SitePage() {
       <section className="bg-white/75 py-24">
         <div className="mx-auto max-w-[1400px] px-8">
           <SectionTitle lang={lang}>{d.gallery.title}</SectionTitle>
-          <p className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600">
+          <TextBlockAnimation
+            as="p"
+            key={`galintro-${lang}`}
+            blockColor="#2563eb"
+            className="mb-16 max-w-3xl text-lg leading-relaxed text-gray-600"
+          >
             {d.gallery.intro}
-          </p>
+          </TextBlockAnimation>
           <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2">
             {GALLERY_ITEMS.map((item, i) => (
               <div key={item.src} className="overflow-hidden rounded-lg">
@@ -239,24 +320,47 @@ export function SitePage() {
             duration={0.8}
             className="text-3xl font-light leading-snug tracking-tight sm:text-5xl"
           />
-          <p className="mt-8 text-sm font-semibold uppercase tracking-[2px] text-white/60">
+          <TextBlockAnimation
+            as="p"
+            key={`attr-${lang}`}
+            blockColor="#eef1f6"
+            className="mt-8 text-sm font-semibold uppercase tracking-[2px] text-white/60"
+          >
             {d.quote.attribution}
-          </p>
+          </TextBlockAnimation>
         </div>
       </section>
 
       {/* 页脚 */}
       <footer className="bg-white/70 py-16 text-center">
-        <p className="text-sm text-gray-600">{d.footer.copyright}</p>
-        <p className="mt-2 text-sm text-gray-600 opacity-60">
-          {d.footer.disclaimer}
-        </p>
-        <p className="mt-4 text-xs text-gray-600 opacity-50">
-          {d.footer.sources}
-        </p>
-        <p className="mt-3 text-xs text-gray-600 opacity-50">
-          {d.footer.credit}
-        </p>
+        <TextBlockAnimation
+          as="p"
+          key={`f1-${lang}`}
+          lines={[d.footer.copyright]}
+          blockColor="#2563eb"
+          className="text-sm text-gray-600"
+        />
+        <TextBlockAnimation
+          as="p"
+          key={`f2-${lang}`}
+          lines={[d.footer.disclaimer]}
+          blockColor="#2563eb"
+          className="mt-2 text-sm text-gray-600 opacity-60"
+        />
+        <TextBlockAnimation
+          as="p"
+          key={`f3-${lang}`}
+          lines={[d.footer.sources]}
+          blockColor="#2563eb"
+          className="mt-4 text-xs text-gray-600 opacity-50"
+        />
+        <TextBlockAnimation
+          as="p"
+          key={`f4-${lang}`}
+          lines={[d.footer.credit]}
+          blockColor="#2563eb"
+          className="mt-3 text-xs text-gray-600 opacity-50"
+        />
       </footer>
     </main>
   );
