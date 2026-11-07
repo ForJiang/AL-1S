@@ -1,15 +1,14 @@
 /* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
 import GlyphSwell from "@/components/ui/glyph-swell";
+import { LangSwitcher } from "@/components/lang-switcher";
 import {
   GALLERY_ITEMS,
   HERO_DIMS,
   HERO_IMG,
-  LANGS,
   STORY_DIMS,
   STORY_IMG,
   getDictionary,
   img,
-  langPath,
 } from "@/lib/i18n";
 import type { Lang, Row } from "@/lib/i18n";
 
@@ -37,32 +36,6 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
     <h2 className="mb-8 text-4xl font-black tracking-tight sm:text-5xl">
       {children}
     </h2>
-  );
-}
-
-function LangSwitcher({ current }: { current: Lang }) {
-  return (
-    <nav className="fixed top-4 right-4 z-50 flex items-center gap-1 rounded-full bg-white/80 p-1 shadow-sm backdrop-blur sm:top-6 sm:right-6">
-      {LANGS.map(({ lang, label }) =>
-        lang === current ? (
-          <span
-            key={lang}
-            aria-current="true"
-            className="rounded-full bg-black px-3 py-1.5 text-xs font-semibold text-white sm:text-sm"
-          >
-            {label}
-          </span>
-        ) : (
-          <a
-            key={lang}
-            href={langPath(lang)}
-            className="rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:bg-gray-100 hover:text-black sm:text-sm"
-          >
-            {label}
-          </a>
-        ),
-      )}
-    </nav>
   );
 }
 
