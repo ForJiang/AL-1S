@@ -69,6 +69,23 @@ export interface Dictionary {
       string,
       string,
       string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
     ];
   };
   quote: { text: string; attribution: string };
