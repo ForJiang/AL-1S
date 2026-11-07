@@ -3,8 +3,6 @@ import GlyphSwell from "@/components/ui/glyph-swell";
 import { LangSwitcher } from "@/components/lang-switcher";
 import {
   GALLERY_ITEMS,
-  HERO_DIMS,
-  HERO_IMG,
   STORY_DIMS,
   STORY_IMG,
   getDictionary,
@@ -59,9 +57,9 @@ export function SitePage({ lang }: { lang: Lang }) {
       />
       <LangSwitcher current={lang} />
 
-      {/* Hero：文字在上，主图在下（保持原始比例，不裁剪；所有断点可见） */}
-      <section className="min-h-screen pb-16 pt-20">
-        <div className="mx-auto max-w-[1400px] px-8">
+      {/* Hero：纯文字（主图移入下方角色画廊） */}
+      <section className="flex min-h-screen items-center">
+        <div className="mx-auto w-full max-w-[1400px] px-8">
           <h1 className="mb-6 text-6xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-8xl">
             {d.hero.titleLines[0]}
             <br />
@@ -73,15 +71,6 @@ export function SitePage({ lang }: { lang: Lang }) {
           <p className="text-sm font-semibold uppercase tracking-[2px] text-blue-600">
             {d.hero.tagline}
           </p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={img(HERO_IMG)}
-            width={HERO_DIMS.w}
-            height={HERO_DIMS.h}
-            alt={d.hero.imageAlt}
-            fetchPriority="high"
-            className="mx-auto mt-8 block h-[45vh] max-h-[520px] w-auto rounded-lg bg-gray-100"
-          />
         </div>
       </section>
 

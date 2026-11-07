@@ -24,7 +24,6 @@ export interface Dictionary {
     titleLines: [string, string];
     subtitle: string;
     tagline: string;
-    imageAlt: string;
   };
   story: {
     title: string;
@@ -59,8 +58,9 @@ export interface Dictionary {
   gallery: {
     title: string;
     intro: string;
-    /* 与 config.ts 的 GALLERY_SRCS 按下标一一对应 */
+    /* 与 config.ts 的 GALLERY_ITEMS 按下标一一对应 */
     alts: [
+      string,
       string,
       string,
       string,

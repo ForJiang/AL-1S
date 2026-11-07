@@ -13,7 +13,6 @@ export const ja: Dictionary = {
     titleLines: ["天童", "アリス"],
     subtitle: "Tendou Aris",
     tagline: "見習い勇者 · AL-1S",
-    imageAlt: "驚くアリス（メイド姿の立ち絵）",
   },
   story: {
     title: "背景ストーリー",
@@ -122,6 +121,7 @@ export const ja: Dictionary = {
       "湖畔で冬服を着たアリス",
       "白髪赤瞳のキー",
       "カジュアル姿のアリス（サングラスと学生かばん）",
+      "驚くアリス（メイド姿の立ち絵）",
     ],
   },
   quote: {

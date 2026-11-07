@@ -12,7 +12,6 @@ export const zhCN: Dictionary = {
     titleLines: ["天童", "アリス"],
     subtitle: "Tendou Aris",
     tagline: "见习勇者 · AL-1S",
-    imageAlt: "惊讶的爱丽丝（女仆装立绘）",
   },
   story: {
     title: "背景故事",
@@ -121,6 +120,7 @@ export const zhCN: Dictionary = {
       "湖畔冬装的爱丽丝",
       "白发红瞳的Key（凯）",
       "换上休闲装、头顶墨镜的爱丽丝",
+      "惊讶的爱丽丝（女仆装立绘）",
     ],
   },
   quote: {

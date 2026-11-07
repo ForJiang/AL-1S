@@ -13,7 +13,6 @@ export const en: Dictionary = {
     titleLines: ["Tendou", "Aris"],
     subtitle: "天童アリス",
     tagline: "Apprentice Hero · AL-1S",
-    imageAlt: "A surprised Aris (maid outfit character art)",
   },
   story: {
     title: "Backstory",
@@ -125,6 +124,7 @@ export const en: Dictionary = {
       "Aris in winter clothes by the lakeside",
       "Key with white hair and red eyes",
       "Aris in casual clothes with sunglasses and a school bag",
+      "A surprised Aris (maid outfit character art)",
     ],
   },
   quote: {

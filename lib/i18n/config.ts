@@ -24,8 +24,6 @@ export const langPath = (lang: Lang) => `${base}/${lang}/`;
 
 /* 图片文件名全语言共用（定义在此，词典只放 alt 文案，避免各语言间漂移）。
    w/h 为文件原始尺寸：给 <img> 提供宽高属性，浏览器可提前预留版面（消除 CLS）。 */
-export const HERO_IMG = "aris-hero.jpg";
-export const HERO_DIMS = { w: 1080, h: 1894 };
 export const STORY_IMG = "aris-story.jpg";
 export const STORY_DIMS = { w: 1080, h: 1894 };
 export const GALLERY_ITEMS: ReadonlyArray<{
@@ -41,4 +39,6 @@ export const GALLERY_ITEMS: ReadonlyArray<{
   { src: "aris-g6.jpg", w: 1400, h: 787 },
   { src: "aris-g7.jpg", w: 947, h: 1500 },
   { src: "aris-g8.jpg", w: 914, h: 1600 },
+  /* 原 Hero 主图：惊讶女仆立绘（自 Hero 移入画廊） */
+  { src: "aris-hero.jpg", w: 1080, h: 1894 },
 ];

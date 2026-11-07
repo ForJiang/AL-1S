@@ -15,7 +15,6 @@ export const zhTW: Dictionary = {
     titleLines: ["天童", "愛麗絲"],
     subtitle: "Tendou Aris",
     tagline: "見習勇者 · AL-1S",
-    imageAlt: "驚訝的愛麗絲（女僕裝立繪）",
   },
   story: {
     title: "背景故事",
@@ -124,6 +123,7 @@ export const zhTW: Dictionary = {
       "湖畔冬裝的愛麗絲",
       "白髮紅瞳的Key（凱）",
       "換上休閒裝、頭頂墨鏡的愛麗絲",
+      "驚訝的愛麗絲（女僕裝立繪）",
     ],
   },
   quote: {
