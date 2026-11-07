@@ -331,36 +331,18 @@ export function SitePage() {
         </div>
       </section>
 
-      {/* 页脚 */}
+      {/* 页脚：保持静态，不加揭示动画 */}
       <footer className="bg-white/70 py-16 text-center">
-        <TextBlockAnimation
-          as="p"
-          key={`f1-${lang}`}
-          lines={[d.footer.copyright]}
-          blockColor="#2563eb"
-          className="text-sm text-gray-600"
-        />
-        <TextBlockAnimation
-          as="p"
-          key={`f2-${lang}`}
-          lines={[d.footer.disclaimer]}
-          blockColor="#2563eb"
-          className="mt-2 text-sm text-gray-600 opacity-60"
-        />
-        <TextBlockAnimation
-          as="p"
-          key={`f3-${lang}`}
-          lines={[d.footer.sources]}
-          blockColor="#2563eb"
-          className="mt-4 text-xs text-gray-600 opacity-50"
-        />
-        <TextBlockAnimation
-          as="p"
-          key={`f4-${lang}`}
-          lines={[d.footer.credit]}
-          blockColor="#2563eb"
-          className="mt-3 text-xs text-gray-600 opacity-50"
-        />
+        <p className="text-sm text-gray-600">{d.footer.copyright}</p>
+        <p className="mt-2 text-sm text-gray-600 opacity-60">
+          {d.footer.disclaimer}
+        </p>
+        <p className="mt-4 text-xs text-gray-600 opacity-50">
+          {d.footer.sources}
+        </p>
+        <p className="mt-3 text-xs text-gray-600 opacity-50">
+          {d.footer.credit}
+        </p>
       </footer>
     </main>
   );
