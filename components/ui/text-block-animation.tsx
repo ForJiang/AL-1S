@@ -2,24 +2,15 @@
 
 /* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang
    块状文字揭示动画，效果源自 React Bits TextBlockAnimation（GSAP SplitText）。
-   实现改为 React 原生：SplitText 的 DOM 改写与 React 协调及语言切换冲突
-   （实测切换后文本节点丢失），故每行包装与揭示块由 React 渲染，GSAP 仅动画。
-   两种用法：
-   - lines 模式：纯文本数组，逐行各一个揭示块
-   - children 模式：单个内容块（可含 <strong> 等富文本），整块一次揭示
+   实现为纯 CSS keyframes + IntersectionObserver 触发：
+   GSAP 的 rAF 时间线在部分预览环境会被冻结（文字永远隐形），CSS 动画由
+   合成器驱动不受影响；IO 进入视口后加 .play 播放一次（forwards 保持终态）。
    - 尊重 prefers-reduced-motion：直接呈现文本
-   - 初始态全可见（隐藏放在时间线内）：动画跑不动的环境优雅降级 */
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { createElement, useRef } from "react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+   - 播放前文本隐藏：色块扫入 → 文字显现 → 色块扫出 */
+import { createElement, useEffect, useRef, type CSSProperties } from "react";
 
 type TextBlockAnimationProps = {
-  /** lines 模式：每个元素渲染为一行，各配一个揭示块 */
+  /** lines 模式：每个元素渲染为一行，各配一个揭示块（错峰 = stagger） */
   lines?: string[];
   /** children 模式：提供时渲染单块揭示，内容可含富文本 */
   children?: React.ReactNode;
@@ -46,91 +37,62 @@ export default function TextBlockAnimation({
 }: TextBlockAnimationProps) {
   const containerRef = useRef<HTMLElement>(null);
 
-  useGSAP(
-    () => {
-      const host = containerRef.current;
-      if (!host) return;
-      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  useEffect(() => {
+    const host = containerRef.current;
+    if (!host) return;
+    const play = () => host.classList.add("play");
 
-      const blocks = host.querySelectorAll<HTMLElement>("[data-reveal-block]");
-      const texts = host.querySelectorAll<HTMLElement>("[data-reveal-text]");
-      if (!blocks.length) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      play();
+      return;
+    }
+    if (!animateOnScroll) {
+      play();
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            play();
+            io.disconnect();
+          }
+        }
+      },
+      { rootMargin: "0px 0px -15% 0px" },
+    );
+    io.observe(host);
+    return () => io.disconnect();
+  }, [animateOnScroll]);
 
-      const tl = gsap.timeline({
-        defaults: { ease: "expo.inOut" },
-        scrollTrigger: animateOnScroll
-          ? {
-              trigger: host,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            }
-          : undefined,
-        delay,
-      });
-
-      tl.set(texts, { opacity: 0 })
-        .to(blocks, {
-          scaleX: 1,
-          duration,
-          stagger,
-          transformOrigin: "left center",
-        })
-        .set(texts, { opacity: 1, stagger }, `<${duration / 2}`)
-        .to(
-          blocks,
-          {
-            scaleX: 0,
-            duration,
-            stagger,
-            transformOrigin: "right center",
-          },
-          `<${duration * 0.4}`,
-        );
-    },
-    {
-      scope: containerRef,
-      dependencies: [
-        animateOnScroll,
-        delay,
-        blockColor,
-        stagger,
-        duration,
-        lines,
-        children,
-      ],
-    },
-  );
-
-  const block = createElement("span", {
-    "data-reveal-block": "",
-    style: {
-      position: "absolute",
-      inset: 0,
-      backgroundColor: blockColor,
-      zIndex: 2,
-      transform: "scaleX(0)",
-      transformOrigin: "left center",
-    },
-  });
-
-  const clip = createElement(
-    "span",
-    { className: "block overflow-hidden" },
-    createElement(
-      "span",
-      { "data-reveal-text": "", className: "block" },
-      children !== undefined
-        ? children
-        : (lines ?? []).map((line, i) =>
-            createElement("span", { key: i, className: "block" }, line || "\u00A0"),
-          ),
-    ),
-    block,
-  );
+  const lineCount = children !== undefined ? 1 : (lines?.length ?? 0);
+  const lineEls = [];
+  for (let i = 0; i < lineCount; i++) {
+    const lineStyle = {
+      "--tba-delay": `${(delay + i * stagger).toFixed(2)}s`,
+      "--tba-dur": `${duration}s`,
+    } as CSSProperties;
+    lineEls.push(
+      <span className="tba-line" key={i} style={lineStyle}>
+        <span className="tba-text">
+          {children !== undefined ? children : (lines && lines[i]) || "\u00A0"}
+        </span>
+        <span
+          aria-hidden="true"
+          className="tba-block"
+          style={{ backgroundColor: blockColor }}
+        />
+      </span>,
+    );
+  }
 
   return createElement(
     as,
-    { ref: containerRef, className, style: { position: "relative" } },
-    clip,
+    {
+      ref: containerRef,
+      className: `tba ${className ?? ""}`,
+      style: { position: "relative" },
+    },
+    lineEls,
   );
 }
