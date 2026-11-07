@@ -22,16 +22,23 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const img = (name: string) => `${base}/images/${name}`;
 export const langPath = (lang: Lang) => `${base}/${lang}/`;
 
-/* 图片文件名全语言共用（定义在此，词典只放 alt 文案，避免各语言间漂移） */
+/* 图片文件名全语言共用（定义在此，词典只放 alt 文案，避免各语言间漂移）。
+   w/h 为文件原始尺寸：给 <img> 提供宽高属性，浏览器可提前预留版面（消除 CLS）。 */
 export const HERO_IMG = "aris-hero.jpg";
+export const HERO_DIMS = { w: 1080, h: 1894 };
 export const STORY_IMG = "aris-story.jpg";
-export const GALLERY_SRCS = [
-  "aris-g1.jpg",
-  "aris-g2.jpg",
-  "aris-g3.jpg",
-  "aris-g4.jpg",
-  "aris-g5.jpg",
-  "aris-g6.jpg",
-  "aris-g7.jpg",
-  "aris-g8.jpg",
-] as const;
+export const STORY_DIMS = { w: 1080, h: 1894 };
+export const GALLERY_ITEMS: ReadonlyArray<{
+  src: string;
+  w: number;
+  h: number;
+}> = [
+  { src: "aris-g1.jpg", w: 1854, h: 1080 },
+  { src: "aris-g2.jpg", w: 982, h: 1392 },
+  { src: "aris-g3.jpg", w: 1536, h: 1080 },
+  { src: "aris-g4.jpg", w: 1027, h: 1540 },
+  { src: "aris-g5.jpg", w: 1000, h: 1500 },
+  { src: "aris-g6.jpg", w: 1400, h: 787 },
+  { src: "aris-g7.jpg", w: 947, h: 1500 },
+  { src: "aris-g8.jpg", w: 914, h: 1600 },
+];

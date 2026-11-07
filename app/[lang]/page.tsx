@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GlyphSwell from "@/components/ui/glyph-swell";
 import {
-  GALLERY_SRCS,
+  GALLERY_ITEMS,
+  HERO_DIMS,
   HERO_IMG,
   LANGS,
+  STORY_DIMS,
   STORY_IMG,
   getDictionary,
   img,
@@ -129,7 +131,10 @@ export default async function LangPage({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={img(HERO_IMG)}
+              width={HERO_DIMS.w}
+              height={HERO_DIMS.h}
               alt={d.hero.imageAlt}
+              fetchPriority="high"
               className="h-full w-full object-contain"
             />
           </div>
@@ -150,7 +155,11 @@ export default async function LangPage({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img(STORY_IMG)}
+                width={STORY_DIMS.w}
+                height={STORY_DIMS.h}
                 alt={d.story.imageAlt}
+                loading="lazy"
+                decoding="async"
                 className="w-full rounded-lg"
               />
             </div>
@@ -248,12 +257,16 @@ export default async function LangPage({
             {d.gallery.intro}
           </p>
           <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2">
-            {GALLERY_SRCS.map((src, i) => (
-              <div key={src} className="overflow-hidden rounded-lg">
+            {GALLERY_ITEMS.map((item, i) => (
+              <div key={item.src} className="overflow-hidden rounded-lg">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={img(src)}
+                  src={img(item.src)}
+                  width={item.w}
+                  height={item.h}
                   alt={d.gallery.alts[i]}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full transition-transform duration-500 hover:scale-105"
                 />
               </div>
