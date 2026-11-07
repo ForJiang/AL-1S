@@ -86,33 +86,29 @@ export function SitePage({ lang }: { lang: Lang }) {
       />
       <LangSwitcher current={lang} />
 
-      {/* Hero：内容直接坐在全页波浪背景上 */}
-      <section className="h-screen">
-        <div className="mx-auto grid h-full max-w-[1400px] grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2 lg:gap-24">
-          <div>
-            <h1 className="mb-6 text-6xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-8xl">
-              {d.hero.titleLines[0]}
-              <br />
-              {d.hero.titleLines[1]}
-            </h1>
-            <p className="mb-4 text-xl font-light text-gray-600 sm:text-2xl">
-              {d.hero.subtitle}
-            </p>
-            <p className="text-sm font-semibold uppercase tracking-[2px] text-blue-600">
-              {d.hero.tagline}
-            </p>
-          </div>
-          <div className="relative hidden h-[700px] max-h-[80vh] rounded-lg bg-gray-100 lg:block">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={img(HERO_IMG)}
-              width={HERO_DIMS.w}
-              height={HERO_DIMS.h}
-              alt={d.hero.imageAlt}
-              fetchPriority="high"
-              className="h-full w-full object-contain"
-            />
-          </div>
+      {/* Hero：文字在上，主图在下（保持原始比例，不裁剪；所有断点可见） */}
+      <section className="min-h-screen pb-16 pt-20">
+        <div className="mx-auto max-w-[1400px] px-8">
+          <h1 className="mb-6 text-6xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-8xl">
+            {d.hero.titleLines[0]}
+            <br />
+            {d.hero.titleLines[1]}
+          </h1>
+          <p className="mb-4 text-xl font-light text-gray-600 sm:text-2xl">
+            {d.hero.subtitle}
+          </p>
+          <p className="text-sm font-semibold uppercase tracking-[2px] text-blue-600">
+            {d.hero.tagline}
+          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={img(HERO_IMG)}
+            width={HERO_DIMS.w}
+            height={HERO_DIMS.h}
+            alt={d.hero.imageAlt}
+            fetchPriority="high"
+            className="mx-auto mt-10 block h-[60vh] max-h-[700px] w-auto rounded-lg bg-gray-100"
+          />
         </div>
       </section>
 
