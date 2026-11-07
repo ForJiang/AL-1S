@@ -1,11 +1,14 @@
+"use client";
+
 /* AL-1S · 天童アリス粉丝站 · © 2026 ForJiang · github.com/ForJiang */
+import { useEffect, useState } from "react";
 import GlyphSwell from "@/components/ui/glyph-swell";
 import { LangSwitcher } from "@/components/lang-switcher";
 import {
   GALLERY_ITEMS,
   STORY_DIMS,
   STORY_IMG,
-  getDictionary,
+  dictionaries,
   img,
 } from "@/lib/i18n";
 import type { Lang, Row } from "@/lib/i18n";
@@ -37,9 +40,15 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-/* 站点主体：根路径与 /[lang] 路由共用，lang 决定词典与切换器高亮 */
-export function SitePage({ lang }: { lang: Lang }) {
-  const d = getDictionary(lang);
+/* 站点主体：四语言在同一个网页内原地切换（不跳转），默认简体中文 */
+export function SitePage() {
+  const [lang, setLang] = useState<Lang>("zh-CN");
+  const d = dictionaries[lang];
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title = d.meta.title;
+  }, [lang, d]);
 
   return (
     <main>
@@ -49,15 +58,9 @@ export function SitePage({ lang }: { lang: Lang }) {
         <GlyphSwell colors={HERO_COLORS} className="h-full w-full" />
       </div>
 
-      {/* 根布局的 html lang 固定为 zh-CN，这里按当前语言就地修正（解析期执行，先于绘制） */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `document.documentElement.lang=${JSON.stringify(lang)};`,
-        }}
-      />
-      <LangSwitcher current={lang} />
+      <LangSwitcher current={lang} onSwitch={setLang} />
 
-      {/* Hero：纯文字（主图移入下方角色画廊） */}
+      {/* Hero：纯文字（主图在下方角色画廊） */}
       <section className="flex min-h-screen items-center">
         <div className="mx-auto w-full max-w-[1400px] px-8">
           <h1 className="mb-6 text-6xl font-black leading-[0.95] tracking-tighter sm:text-7xl lg:text-8xl">
