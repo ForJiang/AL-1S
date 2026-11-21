@@ -140,7 +140,7 @@ export function SitePage() {
                 width={STORY_DIMS.w}
                 height={STORY_DIMS.h}
                 alt={d.story.imageAlt}
-                loading="lazy"
+                fetchPriority="high"
                 decoding="async"
                 className="w-full rounded-lg"
               />
@@ -291,16 +291,18 @@ export function SitePage() {
           >
             {d.gallery.intro}
           </TextBlockAnimation>
-          <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2">
+          <div className="columns-1 gap-8 sm:columns-2">
             {GALLERY_ITEMS.map((item, i) => (
-              <ImgReveal key={item.src} className="overflow-hidden rounded-lg">
+              <ImgReveal
+                key={item.src}
+                className="mb-8 break-inside-avoid overflow-hidden rounded-lg"
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={img(item.src)}
                   width={item.w}
                   height={item.h}
                   alt={d.gallery.alts[i]}
-                  loading="lazy"
                   decoding="async"
                   className="w-full transition-transform duration-500 hover:scale-105"
                 />
