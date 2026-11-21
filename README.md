@@ -1,8 +1,8 @@
 # AL-1S · 天童アリス粉丝站
 
-> 蔚蓝档案·天童爱丽丝（Tendou Aris）主题粉丝站 AL-1S：简中/繁中/日本語/English 四语言，按浏览器语言自动跳转；Next.js 15 + React 19 静态导出，GlyphSwell 指针波纹背景，纯静态零依赖
+> 蔚蓝档案·天童爱丽丝四语言主题粉丝站
 >
-> Blue Archive Tendou Aris fan site: 4 languages (zh-Hans/zh-Hant/ja/en) with automatic browser-language redirect; Next.js 15 + React 19 static export, zero-dependency
+> Blue Archive Tendou Aris fan site in four languages
 
 English intro at the bottom: [English](#english)
 
@@ -35,7 +35,7 @@ English intro at the bottom: [English](#english)
 
 **作者 / Author: ForJiang** · [github.com/ForJiang](https://github.com/ForJiang)
 
-© 2026 ForJiang. 保留所有权利。
+本项目代码以 [GPL-3.0](LICENSE) 许可发布 © 2026 ForJiang。
 
 蔚蓝档案（Blue Archive）及所有角色版权归 NEXON Games 所有，本站为非商业粉丝作品。
 
@@ -70,6 +70,8 @@ English intro at the bottom: [English](#english)
 ### Credits
 
 **Author:** ForJiang · [github.com/ForJiang](https://github.com/ForJiang)
+
+Licensed under [GPL-3.0](LICENSE) © 2026 ForJiang.
 
 © 2026 ForJiang. All rights reserved.
 
